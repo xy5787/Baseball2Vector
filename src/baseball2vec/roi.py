@@ -135,7 +135,7 @@ def run_regression(
             max_depth=6,
             min_samples_leaf=10,
             random_state=random_state,
-            n_jobs=-1,
+            n_jobs=1,
         )
         rf5.fit(X_delta, y)
         rf5_cv = cross_val_score(rf5, X_delta, y, cv=kf, scoring="r2")
@@ -145,7 +145,7 @@ def run_regression(
             max_depth=8,
             min_samples_leaf=8,
             random_state=random_state,
-            n_jobs=-1,
+            n_jobs=1,
         )
         rf10.fit(X_full, y)
         rf10_cv = cross_val_score(rf10, X_full, y, cv=kf, scoring="r2")
