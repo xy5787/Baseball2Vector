@@ -114,5 +114,5 @@ baseball2vec/
 
 ## Contact
 
-**Jaeseok Choi** — `xy5787@gmail.com`
+**Jaeseok Choi** — `jaeseok.choi@skku.edu`
 Advisor: **Prof. Jangwon Lee**, I2SLAB, Sungkyunkwan University
