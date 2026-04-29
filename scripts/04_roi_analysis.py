@@ -13,6 +13,7 @@ outputs/figures/roi_delta_scatter.png
 outputs/tables/lr_results.csv
 outputs/tables/individual_roi.csv
 """
+
 import sys
 from pathlib import Path
 
@@ -48,17 +49,23 @@ print("Step 4: ROI analysis")
 print("=" * 60)
 
 player_df = pd.read_csv(PROCESSED_DIR / "v3_results.csv")
-print(f"  Loaded: {len(player_df)} player-seasons, {player_df['Name'].nunique()} players")
+print(
+    f"  Loaded: {len(player_df)} player-seasons, {player_df['Name'].nunique()} players"
+)
 
 delta_clean = build_delta_dataset(player_df)
-print(f"  Consecutive-season pairs: {len(delta_clean)}, unique players: {delta_clean['Name'].nunique()}")
+print(
+    f"  Consecutive-season pairs: {len(delta_clean)}, unique players: {delta_clean['Name'].nunique()}"
+)
 
 results = run_regression(delta_clean, random_state=SEED)
 
 print("\n  Model comparison (5-fold CV R²):")
 print(f"  {'Target':<10} {'LR(5f)':>9} {'Ridge':>9} {'RF(5f)':>9} {'RF(10f)':>9}")
 for r in results:
-    print(f"  {r.target:<10} {r.lr_r2_cv:>9.4f} {r.ridge_r2_cv:>9.4f} {r.rf5_r2_cv:>9.4f} {r.rf10_r2_cv:>9.4f}")
+    print(
+        f"  {r.target:<10} {r.lr_r2_cv:>9.4f} {r.ridge_r2_cv:>9.4f} {r.rf5_r2_cv:>9.4f} {r.rf10_r2_cv:>9.4f}"
+    )
 
 # ΔwRC+ is the primary target
 wrc_res = next((r for r in results if "wRC" in r.target), None)

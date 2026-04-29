@@ -47,7 +47,9 @@ def fetch_raw(years: list[int] = YEARS, qual: int = 100) -> pd.DataFrame:
     Raises:
         RuntimeError: If no seasons could be fetched.
     """
-    from pybaseball import batting_stats  # imported lazily to keep the module importable without pybaseball
+    from pybaseball import (
+        batting_stats,
+    )  # imported lazily to keep the module importable without pybaseball
 
     df_list: list[pd.DataFrame] = []
     for y in years:
@@ -67,7 +69,9 @@ def fetch_raw(years: list[int] = YEARS, qual: int = 100) -> pd.DataFrame:
     return pd.concat(df_list).reset_index(drop=True)
 
 
-def load_raw(refetch: bool = False, years: list[int] = YEARS, qual: int = 100) -> pd.DataFrame:
+def load_raw(
+    refetch: bool = False, years: list[int] = YEARS, qual: int = 100
+) -> pd.DataFrame:
     """Load raw batting stats, using a local cache when available.
 
     Args:
@@ -134,6 +138,11 @@ def preprocess(raw_df: pd.DataFrame) -> pd.DataFrame:
 
     print("  Applying Bayesian stabilization...")
     season_means = df.groupby("Season").mean(numeric_only=True)
-    df = df.apply(_stabilize_row, axis=1, season_means=season_means, thresholds=STABILIZATION_THRESHOLDS)
+    df = df.apply(
+        _stabilize_row,
+        axis=1,
+        season_means=season_means,
+        thresholds=STABILIZATION_THRESHOLDS,
+    )
     df["UniqueName"] = df["Name"] + " (" + df["Season"].astype(str) + ")"
     return df

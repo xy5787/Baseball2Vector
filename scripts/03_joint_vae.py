@@ -14,6 +14,7 @@ outputs/figures/v3_radar_*.png
 outputs/figures/v3_uncertainty.png
 outputs/tables/v3_summary.txt
 """
+
 import sys
 from pathlib import Path
 
@@ -32,7 +33,12 @@ from baseball2vec.baselines import (
 )
 from baseball2vec.data import load_raw, preprocess
 from baseball2vec.joint_vae import train as train_vae
-from baseball2vec.tools import TOOL_NAMES, apply_direction, build_final_groups, scale_to_2080, season_zscore
+from baseball2vec.tools import (
+    TOOL_NAMES,
+    apply_direction,
+    build_final_groups,
+    season_zscore,
+)
 from baseball2vec.viz import (
     plot_covariance_heatmap,
     plot_correlation_heatmap,
@@ -97,12 +103,19 @@ corr = correlation_table(result_df, method_names, validation_metrics)
 print("\n  Pentagon Area vs Performance (Pearson r):")
 print(f"  {'Method':<12} {'WAR':>8} {'wRC+':>8} {'OPS':>8}")
 for m in method_names:
-    print(f"  {m:<12} {corr[m]['WAR']:>8.4f} {corr[m]['wRC+']:>8.4f} {corr[m]['OPS']:>8.4f}")
+    print(
+        f"  {m:<12} {corr[m]['WAR']:>8.4f} {corr[m]['wRC+']:>8.4f} {corr[m]['OPS']:>8.4f}"
+    )
 
 plot_correlation_heatmap(corr, method_names, validation_metrics)
 plot_scatter_grid(result_df, method_names, validation_metrics)
 plot_covariance_heatmap(mean_corr, TOOL_NAMES)
-for p in ["Aaron Judge (2024)", "Juan Soto (2024)", "Bobby Witt Jr. (2024)", "Shohei Ohtani (2024)"]:
+for p in [
+    "Aaron Judge (2024)",
+    "Juan Soto (2024)",
+    "Bobby Witt Jr. (2024)",
+    "Shohei Ohtani (2024)",
+]:
     plot_radar(p, result_df, TOOL_NAMES)
 plot_uncertainty(result_df)
 
@@ -112,16 +125,21 @@ print(f"\n  Saved: {PROCESSED_DIR / 'v3_results.csv'} ({len(result_df)} rows)")
 with open(TABLES_DIR / "v3_summary.txt", "w") as f:
     f.write("Baseball2Vec — Joint Encoder VAE (v3) Summary\n")
     f.write("=" * 60 + "\n\n")
-    f.write(f"Data: {len(df)} player-seasons ({min(df['Season'])}-{max(df['Season'])})\n")
+    f.write(
+        f"Data: {len(df)} player-seasons ({min(df['Season'])}-{max(df['Season'])})\n"
+    )
     f.write(f"Tools: {', '.join(TOOL_NAMES)}\n\n")
     f.write("Pentagon Area vs Performance (Pearson r)\n")
     f.write("-" * 50 + "\n")
     f.write(f"{'Method':<12} {'WAR':>8} {'wRC+':>8} {'OPS':>8}\n")
     f.write("-" * 50 + "\n")
     for m in method_names:
-        f.write(f"{m:<12} {corr[m]['WAR']:>8.4f} {corr[m]['wRC+']:>8.4f} {corr[m]['OPS']:>8.4f}\n")
+        f.write(
+            f"{m:<12} {corr[m]['WAR']:>8.4f} {corr[m]['wRC+']:>8.4f} {corr[m]['OPS']:>8.4f}\n"
+        )
     f.write("\nTool Tradeoff Matrix (league-avg corr from VAE Σ)\n")
     import pandas as _pd
+
     corr_matrix_df = _pd.DataFrame(mean_corr, index=TOOL_NAMES, columns=TOOL_NAMES)
     f.write(corr_matrix_df.round(3).to_string())
 print(f"  Saved: {TABLES_DIR / 'v3_summary.txt'}")

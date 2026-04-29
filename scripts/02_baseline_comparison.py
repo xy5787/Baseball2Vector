@@ -9,6 +9,7 @@ Outputs
 outputs/figures/v2_correlation_heatmap.png
 outputs/tables/correlations.csv
 """
+
 import sys
 from pathlib import Path
 
@@ -18,9 +19,14 @@ import random
 import numpy as np
 import pandas as pd
 
-from baseball2vec.baselines import build_scaled_results, correlation_table, pca_tool_scores, zscore_tool_scores
+from baseball2vec.baselines import (
+    build_scaled_results,
+    correlation_table,
+    pca_tool_scores,
+    zscore_tool_scores,
+)
 from baseball2vec.data import load_raw, preprocess
-from baseball2vec.tools import TOOL_NAMES, apply_direction, build_final_groups, season_zscore
+from baseball2vec.tools import apply_direction, build_final_groups, season_zscore
 from baseball2vec.viz import plot_correlation_heatmap
 
 SEED = 42
@@ -66,7 +72,9 @@ corr = correlation_table(result_df, method_names, validation_metrics)
 print("\n  Pentagon Area vs Performance (Pearson r):")
 print(f"  {'Method':<10} {'WAR':>8} {'wRC+':>8} {'OPS':>8}")
 for m in method_names:
-    print(f"  {m:<10} {corr[m]['WAR']:>8.4f} {corr[m]['wRC+']:>8.4f} {corr[m]['OPS']:>8.4f}")
+    print(
+        f"  {m:<10} {corr[m]['WAR']:>8.4f} {corr[m]['wRC+']:>8.4f} {corr[m]['OPS']:>8.4f}"
+    )
 
 plot_correlation_heatmap(corr, method_names, validation_metrics)
 

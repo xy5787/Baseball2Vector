@@ -13,6 +13,7 @@ Steps
     03  Joint Encoder VAE (train → v3_results.csv + figures)
     04  ROI analysis (ΔTool regression → figures + tables)
 """
+
 import argparse
 import subprocess
 import sys
@@ -29,10 +30,19 @@ SCRIPTS = {
 PYTHON = sys.executable
 
 parser = argparse.ArgumentParser(description="Run the Baseball2Vec pipeline end-to-end")
-parser.add_argument("--from", dest="start_from", default="01", choices=SCRIPTS.keys(),
-                    metavar="STEP", help="Start from this step (default: 01)")
-parser.add_argument("--refetch", action="store_true",
-                    help="Pass --refetch to step 01 to force re-fetch from pybaseball")
+parser.add_argument(
+    "--from",
+    dest="start_from",
+    default="01",
+    choices=SCRIPTS.keys(),
+    metavar="STEP",
+    help="Start from this step (default: 01)",
+)
+parser.add_argument(
+    "--refetch",
+    action="store_true",
+    help="Pass --refetch to step 01 to force re-fetch from pybaseball",
+)
 args = parser.parse_args()
 
 steps = [k for k in sorted(SCRIPTS) if k >= args.start_from]

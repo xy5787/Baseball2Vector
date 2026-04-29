@@ -8,10 +8,10 @@ from sklearn.preprocessing import MinMaxScaler
 
 # 5-Tool feature groups. Columns are filtered at runtime against the actual DataFrame.
 FEATURE_GROUPS: dict[str, list[str]] = {
-    "Contact":    ["Contact%", "K%", "AVG", "xBA", "SwStr%"],
-    "Power":      ["ISO", "SLG", "HardHit%", "Barrel%", "maxEV", "EV", "HR/FB"],
-    "Speed":      ["Spd", "BsR", "UBR", "wSB"],
-    "Defense":    ["Def", "Fld"],
+    "Contact": ["Contact%", "K%", "AVG", "xBA", "SwStr%"],
+    "Power": ["ISO", "SLG", "HardHit%", "Barrel%", "maxEV", "EV", "HR/FB"],
+    "Speed": ["Spd", "BsR", "UBR", "wSB"],
+    "Defense": ["Def", "Fld"],
     "Discipline": ["BB%", "O-Swing%", "Swing%", "BB/K"],
 }
 
@@ -22,10 +22,10 @@ REVERSE_COLS: list[str] = ["K%", "SwStr%", "O-Swing%", "Swing%"]
 
 # One representative stat per tool used to verify latent alignment direction.
 ALIGN_ANCHORS: dict[str, str] = {
-    "Contact":    "Contact%",
-    "Power":      "ISO",
-    "Speed":      "Spd",
-    "Defense":    "Def",
+    "Contact": "Contact%",
+    "Power": "ISO",
+    "Speed": "Spd",
+    "Defense": "Def",
     "Discipline": "BB%",
 }
 
@@ -47,7 +47,9 @@ def build_final_groups(df: pd.DataFrame) -> dict[str, list[str]]:
         valid = [c for c in cols if c in df.columns]
         if valid:
             final[group] = valid
-    assert len(final) == 5, f"Expected 5 tools after filtering, got {len(final)}: {list(final)}"
+    assert len(final) == 5, (
+        f"Expected 5 tools after filtering, got {len(final)}: {list(final)}"
+    )
     return final
 
 

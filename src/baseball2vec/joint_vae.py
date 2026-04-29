@@ -128,8 +128,8 @@ def kl_divergence_full_cov(mu: torch.Tensor, L: torch.Tensor) -> torch.Tensor:
         Scalar KL divergence summed over the batch.
     """
     k = mu.size(1)
-    trace_term = (L ** 2).sum(dim=(1, 2))
-    mu_sq = (mu ** 2).sum(dim=1)
+    trace_term = (L**2).sum(dim=(1, 2))
+    mu_sq = (mu**2).sum(dim=1)
     diag = torch.arange(k)
     log_det = 2.0 * torch.log(L[:, diag, diag]).sum(dim=1)
     return 0.5 * (trace_term + mu_sq - k - log_det).sum()
@@ -163,7 +163,7 @@ def alignment_loss(
             vx = z_i - z_i.mean()
             vy = anchor_vals - anchor_vals.mean()
             corr = torch.sum(vx * vy) / (
-                torch.sqrt(torch.sum(vx ** 2)) * torch.sqrt(torch.sum(vy ** 2)) + 1e-8
+                torch.sqrt(torch.sum(vx**2)) * torch.sqrt(torch.sum(vy**2)) + 1e-8
             )
             loss = loss + (1.0 - corr)
     return loss
@@ -226,8 +226,7 @@ def train(
     """
     X_tensor = torch.FloatTensor(X_aligned[all_features].values)
     group_targets = {
-        g: torch.FloatTensor(X_aligned[cols].values)
-        for g, cols in final_groups.items()
+        g: torch.FloatTensor(X_aligned[cols].values) for g, cols in final_groups.items()
     }
 
     pa_tensor = torch.FloatTensor(pa_series.values).unsqueeze(1)
@@ -255,7 +254,9 @@ def train(
         align = alignment_loss(mu, X_aligned, tool_names)
         disent = soft_disentangle_loss(mu)
 
-        total_loss = recon_loss + kl_weight * kl + align_weight * align + disent_weight * disent
+        total_loss = (
+            recon_loss + kl_weight * kl + align_weight * align + disent_weight * disent
+        )
 
         optimizer.zero_grad()
         total_loss.backward()
@@ -265,9 +266,9 @@ def train(
         if (epoch + 1) % 1000 == 0:
             n = len(pa_series)
             print(
-                f"    Epoch {epoch+1}/{n_epochs} | "
-                f"Recon: {recon_loss.item()/n:.4f} | "
-                f"KL: {kl.item()/n:.4f} (w={kl_weight:.2f}) | "
+                f"    Epoch {epoch + 1}/{n_epochs} | "
+                f"Recon: {recon_loss.item() / n:.4f} | "
+                f"KL: {kl.item() / n:.4f} (w={kl_weight:.2f}) | "
                 f"Align: {align.item():.4f} | "
                 f"Disent: {disent.item():.4f}"
             )

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -12,7 +12,7 @@ from sklearn.model_selection import KFold, cross_val_score
 
 TOOL_NAMES = ["Contact", "Power", "Speed", "Defense", "Discipline"]
 IMPROVEMENT_STEP = 5.0  # synthetic Δ injected per tool for counterfactual ROI
-MIN_PA = 200            # minimum PA for individual ROI analysis
+MIN_PA = 200  # minimum PA for individual ROI analysis
 
 
 @dataclass
@@ -85,7 +85,9 @@ def build_delta_dataset(
 
     delta_df = pd.DataFrame(records)
     available = [c for c in targets if c in delta_df.columns]
-    return delta_df.dropna(subset=delta_cols + from_cols + available).reset_index(drop=True)
+    return delta_df.dropna(subset=delta_cols + from_cols + available).reset_index(
+        drop=True
+    )
 
 
 def run_regression(
@@ -111,7 +113,9 @@ def run_regression(
     X_delta = delta_clean[delta_cols].values
     X_full = delta_clean[from_cols + delta_cols].values
 
-    available_targets = [c for c in ["D_wRC+", "D_WAR", "D_OPS"] if c in delta_clean.columns]
+    available_targets = [
+        c for c in ["D_wRC+", "D_WAR", "D_OPS"] if c in delta_clean.columns
+    ]
     kf = KFold(n_splits=5, shuffle=True, random_state=random_state)
 
     results: list[RegressionResult] = []
@@ -127,15 +131,21 @@ def run_regression(
         ridge_cv = cross_val_score(ridge, X_delta, y, cv=kf, scoring="r2")
 
         rf5 = RandomForestRegressor(
-            n_estimators=200, max_depth=6, min_samples_leaf=10,
-            random_state=random_state, n_jobs=-1
+            n_estimators=200,
+            max_depth=6,
+            min_samples_leaf=10,
+            random_state=random_state,
+            n_jobs=-1,
         )
         rf5.fit(X_delta, y)
         rf5_cv = cross_val_score(rf5, X_delta, y, cv=kf, scoring="r2")
 
         rf10 = RandomForestRegressor(
-            n_estimators=300, max_depth=8, min_samples_leaf=8,
-            random_state=random_state, n_jobs=-1
+            n_estimators=300,
+            max_depth=8,
+            min_samples_leaf=8,
+            random_state=random_state,
+            n_jobs=-1,
         )
         rf10.fit(X_full, y)
         rf10_cv = cross_val_score(rf10, X_full, y, cv=kf, scoring="r2")
@@ -154,7 +164,9 @@ def run_regression(
                 rf10_r2_train=float(rf10.score(X_full, y)),
                 rf10_r2_cv=float(rf10_cv.mean()),
                 rf10_r2_cv_std=float(rf10_cv.std()),
-                rf10_importance=dict(zip(feature_names_full, rf10.feature_importances_)),
+                rf10_importance=dict(
+                    zip(feature_names_full, rf10.feature_importances_)
+                ),
             )
         )
 
@@ -184,7 +196,9 @@ def compute_individual_roi(
         DataFrame with one row per qualifying player, sorted by WAR descending.
     """
     latest = player_df["Season"].max()
-    prospects = player_df[(player_df["Season"] == latest) & (player_df["PA"] >= min_pa)].copy()
+    prospects = player_df[
+        (player_df["Season"] == latest) & (player_df["PA"] >= min_pa)
+    ].copy()
 
     rows: list[dict] = []
     for _, row in prospects.iterrows():

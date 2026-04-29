@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -42,17 +43,28 @@ def plot_correlation_heatmap(
         Path to the saved figure.
     """
     matrix = pd.DataFrame(
-        {m: {meth: corr_table[meth][m] for meth in method_names} for m in validation_metrics}
+        {
+            m: {meth: corr_table[meth][m] for meth in method_names}
+            for m in validation_metrics
+        }
     )
     fig, ax = plt.subplots(figsize=(8, 4))
     sns.heatmap(
-        matrix, annot=True, fmt=".4f", cmap="RdYlGn",
-        vmin=0.4, vmax=0.85, linewidths=1, ax=ax,
+        matrix,
+        annot=True,
+        fmt=".4f",
+        cmap="RdYlGn",
+        vmin=0.4,
+        vmax=0.85,
+        linewidths=1,
+        ax=ax,
         annot_kws={"size": 14, "weight": "bold"},
     )
     ax.set_title(
         "Pentagon Area vs Performance (Z-Score / PCA / Joint VAE)",
-        fontsize=13, weight="bold", pad=15,
+        fontsize=13,
+        weight="bold",
+        pad=15,
     )
     ax.set_ylabel("Method")
     plt.tight_layout()
@@ -82,9 +94,13 @@ def plot_scatter_grid(
         for j, metric in enumerate(validation_metrics):
             ax = axes_grid[i, j]
             ax.scatter(
-                result_df[area_col], result_df[metric],
-                c=result_df["Season"], cmap="viridis",
-                alpha=0.4, s=20, edgecolors="none",
+                result_df[area_col],
+                result_df[metric],
+                c=result_df["Season"],
+                cmap="viridis",
+                alpha=0.4,
+                s=20,
+                edgecolors="none",
             )
             x, y = result_df[area_col], result_df[metric]
             mask = x.notna() & y.notna()
@@ -93,13 +109,17 @@ def plot_scatter_grid(
                 xl = np.linspace(x[mask].min(), x[mask].max(), 100)
                 ax.plot(xl, np.poly1d(z)(xl), "r-", lw=1.5, alpha=0.8)
             r = x[mask].corr(y[mask])
-            ax.set_title(f"{method} vs {metric} (r={r:.4f})", fontsize=11, weight="bold")
+            ax.set_title(
+                f"{method} vs {metric} (r={r:.4f})", fontsize=11, weight="bold"
+            )
             if i == 2:
                 ax.set_xlabel(f"{method} Area")
             if j == 0:
                 ax.set_ylabel(metric)
             ax.grid(True, alpha=0.2)
-    plt.suptitle("Baseline Comparison: 5-Tool Pentagon Area", fontsize=16, weight="bold", y=1.01)
+    plt.suptitle(
+        "Baseline Comparison: 5-Tool Pentagon Area", fontsize=16, weight="bold", y=1.01
+    )
     plt.tight_layout()
     return _save(fig, "v3_scatter_grid.png", figures_dir)
 
@@ -122,12 +142,25 @@ def plot_covariance_heatmap(
     annot = np.array([[f"{v:.3f}" for v in row] for row in mean_corr])
     fig, ax = plt.subplots(figsize=(7, 6))
     sns.heatmap(
-        mean_corr, xticklabels=tool_names, yticklabels=tool_names,
-        annot=annot, fmt="", cmap="RdBu_r", center=0,
-        vmin=-1, vmax=1, linewidths=0.5, ax=ax,
+        mean_corr,
+        xticklabels=tool_names,
+        yticklabels=tool_names,
+        annot=annot,
+        fmt="",
+        cmap="RdBu_r",
+        center=0,
+        vmin=-1,
+        vmax=1,
+        linewidths=0.5,
+        ax=ax,
         annot_kws={"size": 12, "weight": "bold"},
     )
-    ax.set_title("Tool tradeoffs (league-avg covariance from VAE)", fontsize=13, weight="bold", pad=15)
+    ax.set_title(
+        "Tool tradeoffs (league-avg covariance from VAE)",
+        fontsize=13,
+        weight="bold",
+        pad=15,
+    )
     plt.tight_layout()
     return _save(fig, "v3_covariance_heatmap.png", figures_dir)
 
@@ -158,7 +191,9 @@ def plot_radar(
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={"polar": True})
 
     for method, color in [("JointVAE", "red"), ("ZScore", "blue"), ("PCA", "green")]:
-        vals = [row.get(f"{method}_{t}", 50) for t in tool_names] + [row.get(f"{method}_{tool_names[0]}", 50)]
+        vals = [row.get(f"{method}_{t}", 50) for t in tool_names] + [
+            row.get(f"{method}_{tool_names[0]}", 50)
+        ]
         ax.plot(angles, vals, color=color, lw=2, label=method)
         ax.fill(angles, vals, color=color, alpha=0.06)
 
@@ -169,11 +204,15 @@ def plot_radar(
     ax.set_ylim(20, 80)
     ax.set_title(
         f"{player_name}\nWAR={row.get('WAR', '?')}, wRC+={row.get('wRC+', '?')}",
-        fontsize=14, weight="bold", pad=20,
+        fontsize=14,
+        weight="bold",
+        pad=20,
     )
     ax.legend(loc="upper right", bbox_to_anchor=(1.3, 1.1))
 
-    safe = player_name.replace(" ", "_").replace("(", "").replace(")", "").replace(".", "")
+    safe = (
+        player_name.replace(" ", "_").replace("(", "").replace(")", "").replace(".", "")
+    )
     return _save(fig, f"v3_radar_{safe}.png", figures_dir)
 
 
@@ -195,18 +234,30 @@ def plot_uncertainty(
 
     fig, ax = plt.subplots(figsize=(10, 7))
     sc = ax.scatter(
-        result_df["JointVAE_Power"], result_df["Power_sigma"],
-        c=result_df.get("WAR", 0), cmap="coolwarm", alpha=0.5, s=30,
+        result_df["JointVAE_Power"],
+        result_df["Power_sigma"],
+        c=result_df.get("WAR", 0),
+        cmap="coolwarm",
+        alpha=0.5,
+        s=30,
     )
-    for name in ["Aaron Judge (2024)", "Juan Soto (2024)", "Shohei Ohtani (2024)",
-                 "Luis Arraez (2023)", "Bobby Witt Jr. (2024)"]:
+    for name in [
+        "Aaron Judge (2024)",
+        "Juan Soto (2024)",
+        "Shohei Ohtani (2024)",
+        "Luis Arraez (2023)",
+        "Bobby Witt Jr. (2024)",
+    ]:
         try:
             p = result_df[result_df["UniqueName"] == name].iloc[0]
             ax.annotate(
-                name, (p["JointVAE_Power"], p["Power_sigma"]),
-                fontsize=8, fontweight="bold",
+                name,
+                (p["JointVAE_Power"], p["Power_sigma"]),
+                fontsize=8,
+                fontweight="bold",
                 arrowprops={"arrowstyle": "->", "color": "gray", "lw": 0.5},
-                textcoords="offset points", xytext=(10, 5),
+                textcoords="offset points",
+                xytext=(10, 5),
             )
         except IndexError:
             pass
@@ -241,15 +292,21 @@ def plot_roi_coefficients(
     colors = ["#E24B4A" if v > 0 else "#378ADD" for v in vals]
     bars = ax.barh(t_sorted, vals, color=colors, edgecolor="none", height=0.6)
     ax.set_xlabel("ΔwRC+ per unit ΔTool")
-    ax.set_title(f"Linear Regression (5 feat)\nR²={wrc_res.lr_r2_cv:.3f} CV", fontsize=12, weight="bold")
+    ax.set_title(
+        f"Linear Regression (5 feat)\nR²={wrc_res.lr_r2_cv:.3f} CV",
+        fontsize=12,
+        weight="bold",
+    )
     ax.axvline(x=0, color="gray", lw=0.5)
     ax.grid(axis="x", alpha=0.2)
     for bar, val in zip(bars, vals):
         ax.text(
             val + (0.02 if val > 0 else -0.02),
             bar.get_y() + bar.get_height() / 2,
-            f"{val:+.3f}", va="center",
-            ha="left" if val > 0 else "right", fontsize=10,
+            f"{val:+.3f}",
+            va="center",
+            ha="left" if val > 0 else "right",
+            fontsize=10,
         )
 
     ax = axes[1]
@@ -261,7 +318,8 @@ def plot_roi_coefficients(
     ax.set_xlabel("Feature Importance")
     ax.set_title(
         f"Random Forest (10 feat: Current + Δ)\nR²={wrc_res.rf10_r2_cv:.3f} CV",
-        fontsize=12, weight="bold",
+        fontsize=12,
+        weight="bold",
     )
     ax.grid(axis="x", alpha=0.2)
     ax.legend(
@@ -269,10 +327,13 @@ def plot_roi_coefficients(
             Patch(color="#1D9E75", label="ΔTool (change)"),
             Patch(color="#EF9F27", label="Current level"),
         ],
-        fontsize=9, loc="lower right",
+        fontsize=9,
+        loc="lower right",
     )
 
-    plt.suptitle("Tool Improvement ROI: ΔTool → ΔwRC+", fontsize=14, weight="bold", y=1.02)
+    plt.suptitle(
+        "Tool Improvement ROI: ΔTool → ΔwRC+", fontsize=14, weight="bold", y=1.02
+    )
     plt.tight_layout()
     return _save(fig, "roi_coefficients.png", figures_dir)
 
@@ -294,38 +355,56 @@ def plot_roi_individual(
     Returns:
         Path to the saved figure.
     """
-    fig, axes = plt.subplots(1, 2, figsize=(15, 6), gridspec_kw={"width_ratios": [1, 1.5]})
+    fig, axes = plt.subplots(
+        1, 2, figsize=(15, 6), gridspec_kw={"width_ratios": [1, 1.5]}
+    )
 
     ax = axes[0]
     best_counts = prospect_df["Best_Tool"].value_counts()
     palette = {
-        "Power": "#E24B4A", "Contact": "#378ADD", "Speed": "#1D9E75",
-        "Defense": "#EF9F27", "Discipline": "#7F77DD",
+        "Power": "#E24B4A",
+        "Contact": "#378ADD",
+        "Speed": "#1D9E75",
+        "Defense": "#EF9F27",
+        "Discipline": "#7F77DD",
     }
     ax.pie(
         best_counts.values,
         labels=[f"{k}\n({v})" for k, v in best_counts.items()],
         autopct="%1.1f%%",
         colors=[palette.get(k, "#888") for k in best_counts.index],
-        startangle=90, textprops={"fontsize": 10},
+        startangle=90,
+        textprops={"fontsize": 10},
     )
-    ax.set_title(f"Best Development Tool\n({latest_season}, n={len(prospect_df)})", fontsize=12, weight="bold")
+    ax.set_title(
+        f"Best Development Tool\n({latest_season}, n={len(prospect_df)})",
+        fontsize=12,
+        weight="bold",
+    )
 
     ax = axes[1]
     ax.axis("off")
     top10 = prospect_df.nlargest(10, "WAR")
     table_data = []
     for _, row in top10.iterrows():
-        second = sorted([(t, row[f"ROI_{t}"]) for t in tool_names], key=lambda x: -x[1])[1]
-        table_data.append([
-            row["Name"], f"{row['WAR']:.1f}", f"{row['wRC+']:.0f}",
-            row["Best_Tool"], f"{row['Best_ROI']:+.1f}",
-            f"{second[0]}({second[1]:+.1f})",
-        ])
+        second = sorted(
+            [(t, row[f"ROI_{t}"]) for t in tool_names], key=lambda x: -x[1]
+        )[1]
+        table_data.append(
+            [
+                row["Name"],
+                f"{row['WAR']:.1f}",
+                f"{row['wRC+']:.0f}",
+                row["Best_Tool"],
+                f"{row['Best_ROI']:+.1f}",
+                f"{second[0]}({second[1]:+.1f})",
+            ]
+        )
     tbl = ax.table(
         cellText=table_data,
         colLabels=["Player", "WAR", "wRC+", "Best Tool", "ΔwRC+", "2nd Best"],
-        loc="center", cellLoc="center",
+        loc="center",
+        cellLoc="center",
     )
     tbl.auto_set_font_size(False)
     tbl.set_fontsize(9)
@@ -333,7 +412,9 @@ def plot_roi_individual(
     for j in range(6):
         tbl[0, j].set_facecolor("#2C2C2A")
         tbl[0, j].set_text_props(color="white", weight="bold")
-    ax.set_title("Top 10 by WAR — Individualized ROI", fontsize=12, weight="bold", pad=20)
+    ax.set_title(
+        "Top 10 by WAR — Individualized ROI", fontsize=12, weight="bold", pad=20
+    )
 
     plt.tight_layout()
     return _save(fig, "roi_individual_best_tool.png", figures_dir)
@@ -362,7 +443,9 @@ def plot_partial_dependence(
     fig, axes_pd = plt.subplots(2, 5, figsize=(22, 8))
     for i in range(10):
         ax = axes_pd[i // 5, i % 5]
-        pd_res = partial_dependence(rf10_model, X_full, features=[i], kind="average", grid_resolution=50)
+        pd_res = partial_dependence(
+            rf10_model, X_full, features=[i], kind="average", grid_resolution=50
+        )
         # sklearn >= 1.2 uses "grid_values"; older versions use "values"
         grid = pd_res.get("grid_values", pd_res.get("values", [None]))[0]
         avg = pd_res["average"][0]
@@ -377,7 +460,9 @@ def plot_partial_dependence(
         ax.axvline(x=0, color="gray", lw=0.5, ls="--")
     plt.suptitle(
         "Partial Dependence (RF 10-feature): Current Level + ΔTool → ΔwRC+",
-        fontsize=14, weight="bold", y=1.02,
+        fontsize=14,
+        weight="bold",
+        y=1.02,
     )
     plt.tight_layout()
     return _save(fig, "roi_partial_dependence.png", figures_dir)
