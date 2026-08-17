@@ -1,0 +1,7 @@
+stage,n_rows,n_players
+source_player_seasons,2309,826
+stable_id_matched_player_seasons,2286,818
+excluded_ambiguous_or_unmatched,23,10
+stable_id_adjacent_transitions,1414,567
+prospective_training_transitions,1056,506
+prospective_test_transitions,358,358

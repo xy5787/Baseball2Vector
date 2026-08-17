@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-08-08T04:26:57.472916+00:00",
+  "source_path": "/home/i2slab4/baseball-strategy-agents/baseball2vec/data/processed/v3_results.csv",
+  "source_sha256": "70bea280ec725ac78376e94edf41fae6fd036fe8b7a0b71270869eb1cfdf0873",
+  "source_mtime_utc": "2026-04-29T03:39:48.549222+00:00",
+  "manuscript_path": "/home/i2slab4/baseball-strategy-agents/baseball2vec/paper/baseball2vector_en.tex",
+  "manuscript_sha256_stage_a_start": "a873b4beb3b9acbcdd44c5f13d859b8c2a326241234ef49794fe20ff65e9f00d",
+  "chadwick_url": "https://github.com/chadwickbureau/register/archive/refs/heads/master.zip",
+  "chadwick_archive_sha256": "0b071bd03a0acc87673a463a916b85bad8de1e7368fb7534699cf4a042bb4976",
+  "raw_fangraphs_cache_expected": "/home/i2slab4/baseball-strategy-agents/baseball2vec/data/raw/batting_stats_2021_2025.csv",
+  "raw_fangraphs_cache_present": false
+}

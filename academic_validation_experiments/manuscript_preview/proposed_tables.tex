@@ -1,0 +1,35 @@
+\begin{table}[t]
+\centering
+\caption{Prospective prediction of 2025 wRC+ from 2024 information only. Brackets are player-bootstrap 95\% confidence intervals ($n_{train}=1{,}056$, $n_{test}=358$).}
+\label{tab:prospective}
+\scriptsize
+\begin{tabular}{lccc}
+\toprule
+Model & MAE & $R^2$ & Spearman $\rho$ \\
+\midrule
+League mean & 22.274 [20.511, 24.003] & -0.001 [-0.016, -0.000] & — \\
+Carry-forward & 22.349 [20.514, 24.386] & -0.102 [-0.298, 0.078] & 0.449 [0.355, 0.535] \\
+B2V Ridge & 18.023 [16.508, 19.680] & 0.280 [0.179, 0.375] & 0.508 [0.423, 0.588] \\
+B2V + age + PA Ridge & 18.018 [16.518, 19.616] & 0.289 [0.192, 0.382] & 0.522 [0.438, 0.600] \\
+Raw stats + age + PA Ridge & not run & not run & not run \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Year-to-year Spearman stability of the Z-score dimensions. Brackets are player-clustered bootstrap 95\% confidence intervals.}
+\label{tab:stability}
+\scriptsize
+\begin{tabular}{lcccc}
+\toprule
+Dimension & Overall & 100--249 PA & 250--499 PA & $\geq$500 PA \\
+\midrule
+Contact & 0.734 [0.697, 0.765] & 0.604 [0.534, 0.665] & 0.747 [0.695, 0.788] & 0.776 [0.699, 0.830] \\
+Defense & 0.568 [0.516, 0.614] & 0.463 [0.376, 0.534] & 0.566 [0.492, 0.632] & 0.661 [0.574, 0.728] \\
+Discipline & 0.760 [0.726, 0.789] & 0.719 [0.666, 0.763] & 0.766 [0.711, 0.810] & 0.758 [0.676, 0.819] \\
+Power & 0.730 [0.691, 0.761] & 0.572 [0.499, 0.637] & 0.737 [0.680, 0.780] & 0.789 [0.726, 0.838] \\
+Speed & 0.626 [0.580, 0.668] & 0.533 [0.455, 0.604] & 0.640 [0.566, 0.699] & 0.703 [0.627, 0.764] \\
+\bottomrule
+\end{tabular}
+\end{table}

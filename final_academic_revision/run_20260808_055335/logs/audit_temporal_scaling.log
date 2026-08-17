@@ -1,0 +1,29 @@
+{
+  "does_archived_2024_scaling_use_2025_extremes": true,
+  "nature": "Only a shared per-dimension affine offset and scale; no clipping was applied.",
+  "forecast_safe_variant": "standardize each dimension within its input-season cohort using population mean and SD (ddof=0), then fit preprocessing only on training transitions",
+  "safe_columns": [
+    "safe_ZScore_Contact",
+    "safe_ZScore_Power",
+    "safe_ZScore_Discipline",
+    "safe_ZScore_Defense",
+    "safe_ZScore_Speed"
+  ],
+  "exact_equivalence_expected": false,
+  "why_not_exact": "The safe transform changes each season separately; the archived model's second StandardScaler pools training transitions.",
+  "maximum_absolute_prediction_difference_by_model": {
+    "B2V + age + PA Ridge": 0.6594687452495407,
+    "B2V Ridge": 0.7938734854426741,
+    "wRC+ + B2V + age + PA Ridge": 0.750679018191704
+  },
+  "primary_prediction_variant": "within_input_season_standardized",
+  "wording_decision": "Use forecast-safe prospective wording; do not call archived globally scaled-vector results leakage-free."
+}
+
+                  feature_variant                       model       mae       r2  spearman
+           archived_pooled_20_80                   B2V Ridge 18.022550 0.280397  0.507720
+           archived_pooled_20_80        B2V + age + PA Ridge 18.018391 0.288942  0.521608
+           archived_pooled_20_80 wRC+ + B2V + age + PA Ridge 18.050774 0.286850  0.520741
+within_input_season_standardized                   B2V Ridge 18.026684 0.279911  0.507851
+within_input_season_standardized        B2V + age + PA Ridge 18.027933 0.288488  0.522214
+within_input_season_standardized wRC+ + B2V + age + PA Ridge 18.056895 0.286303  0.519662

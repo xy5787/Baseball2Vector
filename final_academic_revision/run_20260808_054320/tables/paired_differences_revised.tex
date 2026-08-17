@@ -1,0 +1,20 @@
+% Generated from results/paired_model_differences.csv
+\begin{table*}[t]
+\centering
+\caption{Paired MAE differences on the 358-player holdout. $\Delta$MAE is baseline MAE minus candidate MAE, so positive values favor the candidate. Intervals use identical player bootstrap resamples.}
+\label{tab:paired}
+\scriptsize
+\begin{tabular}{lll}
+\toprule
+Candidate & Baseline & $\Delta$MAE [95\% CI] \\
+\midrule
+B2V Ridge & Carry-forward wRC$+$ & 4.32 [2.95, 5.84] \\
+B2V Ridge & Calibrated wRC$+$ Ridge & 1.19 [0.40, 2.01] \\
+wRC$+$ $+$ age $+$ PA Ridge & Calibrated wRC$+$ Ridge & 0.04 [-0.50, 0.54] \\
+B2V $+$ age $+$ PA Ridge & B2V Ridge & -0.00 [-0.38, 0.37] \\
+B2V $+$ age $+$ PA Ridge & wRC$+$ $+$ age $+$ PA Ridge & 1.15 [0.40, 1.88] \\
+wRC$+$ $+$ B2V $+$ age $+$ PA Ridge & wRC$+$ $+$ age $+$ PA Ridge & 1.13 [0.30, 1.93] \\
+wRC$+$ $+$ B2V $+$ age $+$ PA Ridge & B2V $+$ age $+$ PA Ridge & -0.03 [-0.14, 0.09] \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -8,7 +8,47 @@ build/
 *.pt
 *.pth
 .DS_Store
+*.orig
+*.aux
+*.out
+*.brf
 outputs/**
 !outputs/.gitkeep
 !outputs/figures/.gitkeep
 !outputs/tables/.gitkeep
+!outputs/revision/
+!outputs/revision/**
+
+# Raw FanGraphs exports (regenerate with scripts/, ~36MB)
+data/raw/
+
+# Vendored LaTeX/Python toolchain downloaded by the revision runs (~400MB)
+final_academic_revision/**/tools/
+final_academic_revision/**/.conda-tectonic/
+
+# Large derived artifacts kept out of the repo: full-resolution figure grids,
+# per-row bootstrap/matching tables. Summary tables and small figures are committed.
+**/outputs/figures/**/v3_radar_*.png
+**/outputs/figures/v3_radar_*.png
+**/outputs/figures/**/v3_scatter_grid.png
+**/outputs/figures/**/v3_uncertainty.png
+**/outputs/figures/average_players_*/
+SD10Pipeline/outputs/figures/roi_delta_scatter.png
+SD10Pipeline/outputs/figures/roi_individual_best_tool.png
+SD10Pipeline/outputs/figures/roi_partial_dependence.png
+SD10Pipeline/outputs/figures/scale_normality_check.png
+SD10Pipeline/data/processed/v3_results.csv
+ScalingRevision/outputs/data/v3_results_revision.csv
+ScalingRevision/outputs/matched_profile_distances_rescaled.csv
+ScalingRevision/outputs/rescaled_results.csv
+academic_validation_experiments/data_intermediate/player_seasons_with_ids.csv
+academic_validation_experiments/data_intermediate/stable_id_transitions.csv
+academic_validation_experiments/results/matched_profile_distances.csv
+academic_validation_experiments/results/prospective_prediction_bootstrap.csv
+final_academic_revision/**/data_intermediate/player_seasons_with_ids.csv
+final_academic_revision/**/data_intermediate/stable_id_transitions_prior.csv
+final_academic_revision/**/results/calibrated_prediction_bootstrap.csv
+final_academic_revision/**/results/matched_profile_distances.csv
+final_academic_revision/**/manuscript_preview/page_renders/
+final_academic_revision/**/manuscript_preview/rendered_pages/
+paper/figures/fig1_zscore_area_vs_war.png

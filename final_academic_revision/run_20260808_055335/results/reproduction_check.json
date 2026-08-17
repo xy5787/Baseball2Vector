@@ -1,0 +1,23 @@
+{
+  "original_manuscript_sha256": "a873b4beb3b9acbcdd44c5f13d859b8c2a326241234ef49794fe20ff65e9f00d",
+  "processed_data_sha256": "70bea280ec725ac78376e94edf41fae6fd036fe8b7a0b71270869eb1cfdf0873",
+  "python_version": "3.12.3",
+  "random_seed": 42,
+  "bootstrap_replicates": 2000,
+  "reproduced": {
+    "alignment_r": 0.8060958222864365,
+    "league_mean_mae": 22.27433553411207,
+    "carry_forward_mae": 22.349162011173185,
+    "forecast_safe_b2v_mae": 18.02668351334404,
+    "forecast_safe_b2v_r2": 0.2799109220731068,
+    "forecast_safe_b2v_spearman": 0.5078511575288486,
+    "same_player_median": 0.7135531593258322,
+    "scalar_matched_median": 1.0040828538654427,
+    "corrected_random_median": 1.1884169383225518
+  },
+  "discrepancies": [
+    "Forecast-safe within-input-season scaling changes B2V MAE from the archived approximately 18.023 to 18.027.",
+    "The random-pair median changes from approximately 1.197 to 1.188 because random pairs now use exactly the 2,080 successfully matched focal rows.",
+    "The same-player median reproduces the prior approximately 0.714 value; the scalar-matched median changes from approximately 1.001 to 1.004 after floating-point ties are resolved by a rounded-gap stable-ID rule."
+  ]
+}

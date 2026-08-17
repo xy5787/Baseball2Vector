@@ -1,0 +1,29 @@
+ subset                 metric  dimension  estimate   ci_low  ci_high       q1       q3  n_pairs  n_players
+overall               spearman    Contact  0.733912 0.696617 0.765383      NaN      NaN     1414        567
+overall               spearman      Power  0.729966 0.690634 0.761213      NaN      NaN     1414        567
+overall               spearman      Speed  0.626158 0.579839 0.667906      NaN      NaN     1414        567
+overall               spearman    Defense  0.567821 0.516272 0.613895      NaN      NaN     1414        567
+overall               spearman Discipline  0.759973 0.725777 0.789156      NaN      NaN     1414        567
+overall      cosine_similarity        all  0.995537 0.995215 0.995755 0.992274 0.997517     1414        567
+overall standardized_euclidean        all  0.713553 0.696366 0.726344 0.541052 0.904190     1414        567
+100-249               spearman    Contact  0.603524 0.534245 0.665171      NaN      NaN      507        346
+100-249               spearman      Power  0.571570 0.499174 0.637170      NaN      NaN      507        346
+100-249               spearman      Speed  0.533379 0.455050 0.604215      NaN      NaN      507        346
+100-249               spearman    Defense  0.462523 0.376458 0.533808      NaN      NaN      507        346
+100-249               spearman Discipline  0.718597 0.666241 0.762912      NaN      NaN      507        346
+100-249      cosine_similarity        all  0.994955 0.994418 0.995562 0.991775 0.997392      507        346
+100-249 standardized_euclidean        all  0.710331 0.678566 0.731763 0.538779 0.893282      507        346
+250-499               spearman    Contact  0.747346 0.694968 0.787923      NaN      NaN      567        318
+250-499               spearman      Power  0.736818 0.679677 0.780401      NaN      NaN      567        318
+250-499               spearman      Speed  0.639503 0.565906 0.698951      NaN      NaN      567        318
+250-499               spearman    Defense  0.565720 0.492019 0.631922      NaN      NaN      567        318
+250-499               spearman Discipline  0.765859 0.710710 0.809992      NaN      NaN      567        318
+250-499      cosine_similarity        all  0.995615 0.995234 0.995997 0.992647 0.997623      567        318
+250-499 standardized_euclidean        all  0.712931 0.683520 0.731526 0.535722 0.892424      567        318
+   500+               spearman    Contact  0.775561 0.699122 0.830144      NaN      NaN      340        165
+   500+               spearman      Power  0.788722 0.725583 0.838421      NaN      NaN      340        165
+   500+               spearman      Speed  0.703184 0.626980 0.764140      NaN      NaN      340        165
+   500+               spearman    Defense  0.661158 0.573746 0.728122      NaN      NaN      340        165
+   500+               spearman Discipline  0.757659 0.676131 0.819155      NaN      NaN      340        165
+   500+      cosine_similarity        all  0.995841 0.995509 0.996218 0.992691 0.997538      340        165
+   500+ standardized_euclidean        all  0.722043 0.684795 0.767145 0.562078 0.976173      340        165

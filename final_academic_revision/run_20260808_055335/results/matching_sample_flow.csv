@@ -1,0 +1,9 @@
+stage,n,detail
+stable-ID focal player-seasons,2286,All have PA >= 100 by source design
+joint-threshold matched focal player-seasons,2080,|delta wRC+| <= 5.0; |delta WAR| <= 0.2
+unmatched focal player-seasons,206,"No same-season, different-ID joint-threshold candidate"
+unique focal stable players,802,Among successful matched rows
+unique comparison stable players,709,Reuse permitted
+reused comparison stable players,516,0.727786 of unique comparison players
+matched rows using a reused comparison,1887,0.907212 of matched rows
+random comparison pairs,2080,Same pair-count basis as matched; same season and PA stratum; seed 42

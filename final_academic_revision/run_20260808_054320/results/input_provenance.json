@@ -1,0 +1,44 @@
+{
+  "python": "3.14.6",
+  "platform": "Linux-6.8.0-137-generic-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "2.5.1",
+    "pandas": "3.0.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.9",
+    "Pillow": "12.3.0"
+  },
+  "seed": 42,
+  "bootstrap_replicates": 2000,
+  "ridge_alpha_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "inputs": [
+    {
+      "path": "/home/i2slab4/baseball-strategy-agents/baseball2vec/final_academic_revision/run_20260808_054320/data_intermediate/player_seasons_with_ids.csv",
+      "sha256": "0c810b9ea6aab754cd389ae7c5ab401a139bb251c6490a84b6e4b71d6cd07963",
+      "mtime": 1786167813.6212056
+    },
+    {
+      "path": "/home/i2slab4/baseball-strategy-agents/baseball2vec/data/processed/v3_results.csv",
+      "sha256": "70bea280ec725ac78376e94edf41fae6fd036fe8b7a0b71270869eb1cfdf0873",
+      "mtime": 1777433988.5492218
+    },
+    {
+      "path": "/home/i2slab4/baseball-strategy-agents/baseball2vec/paper/baseball2vector_en.tex",
+      "sha256": "a873b4beb3b9acbcdd44c5f13d859b8c2a326241234ef49794fe20ff65e9f00d",
+      "mtime": 1786154443.3232212
+    }
+  ],
+  "raw_stat_baseline": {
+    "status": "not run",
+    "reason": "constituent raw-stat cache is absent"
+  },
+  "original_tex_sha256_at_audit": "a873b4beb3b9acbcdd44c5f13d859b8c2a326241234ef49794fe20ff65e9f00d"
+}

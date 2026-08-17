@@ -1,0 +1,14 @@
+                    pair_type  n_pairs  n_focal_players   median       q1       q3   ci_low  ci_high
+         same_player_adjacent     1414              567 0.713553 0.541052 0.904190 0.696326 0.725824
+  scalar_matched_intersection     2080              802 1.001419 0.742635 1.289445 0.979956 1.028116
+random_same_season_pa_stratum     2286              818 1.196800 0.914307 1.554258 1.176133 1.228280
+
+Pairwise differences:
+                          left                       right  median_difference   ci_low  ci_high
+  scalar_matched_intersection        same_player_adjacent           0.287865 0.263340 0.319032
+random_same_season_pa_stratum scalar_matched_intersection           0.195381 0.166483 0.228751
+random_same_season_pa_stratum        same_player_adjacent           0.483247 0.461104 0.514752
+
+Illustrative pair:
+   focal_name comparison_name  focal_season  profile_distance  abs_delta_wrc  abs_delta_war
+Alex Verdugo Luis Robert Jr.          2024          1.786644            1.0            0.0

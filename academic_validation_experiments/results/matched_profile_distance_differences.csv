@@ -1,0 +1,4 @@
+left,right,median_difference,ci_low,ci_high
+scalar_matched_intersection,same_player_adjacent,0.28786549749944057,0.2633404702106573,0.3190320164274509
+random_same_season_pa_stratum,scalar_matched_intersection,0.19538134749826086,0.16648279393287854,0.22875051846801603
+random_same_season_pa_stratum,same_player_adjacent,0.48324684499770143,0.4611038401770574,0.5147517283730395

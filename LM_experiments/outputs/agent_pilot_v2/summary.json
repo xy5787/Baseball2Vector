@@ -1,0 +1,21 @@
+{
+  "run_id": "AGENT_PILOT_NONPUBLICATION_V2",
+  "n_records": 6,
+  "n_agent_predictions": 24,
+  "agent_instance_per_arm": true,
+  "fresh_agent_per_record_arm": false,
+  "subject_exclusion": true,
+  "publication_grade": false,
+  "arm_d_audit_by_variant": {
+    "agent_d": {
+      "identity_leak_count": 0,
+      "denominator": 6,
+      "invalid_comparable_format_count": 0
+    },
+    "agent_d_v21": {
+      "identity_leak_count": 0,
+      "denominator": 6,
+      "invalid_comparable_format_count": 0
+    }
+  }
+}

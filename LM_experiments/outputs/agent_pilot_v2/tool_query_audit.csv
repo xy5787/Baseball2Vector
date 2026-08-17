@@ -1,0 +1,13 @@
+variant,pilot_id,find_comparables_input_source,input_on_20_80_scale,jaccard_at_10,subject_identity_leak
+agent_d,pilot_v2_001,delta_vec,False,0.0,False
+agent_d,pilot_v2_002,delta_vec,False,0.0,False
+agent_d,pilot_v2_003,delta_vec,False,0.0,False
+agent_d,pilot_v2_004,delta_vec,False,0.0,False
+agent_d,pilot_v2_005,delta_vec,False,0.0,False
+agent_d,pilot_v2_006,delta_vec,False,0.0,False
+agent_d_v21,pilot_v2_001,base_vec,True,1.0,False
+agent_d_v21,pilot_v2_002,base_vec,True,1.0,False
+agent_d_v21,pilot_v2_003,base_vec,True,1.0,False
+agent_d_v21,pilot_v2_004,base_vec,True,1.0,False
+agent_d_v21,pilot_v2_005,base_vec,True,1.0,False
+agent_d_v21,pilot_v2_006,base_vec,True,1.0,False

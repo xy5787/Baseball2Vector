@@ -1,0 +1,44 @@
+{
+  "seed": 42,
+  "bootstrap_replicates": 2000,
+  "source_data": "data/processed/v3_results.csv",
+  "authoritative_manuscript": "paper/baseball2vector_en.tex",
+  "years": [2021, 2022, 2023, 2024, 2025],
+  "minimum_pa": 100,
+  "train_transition_end_years": [2022, 2023, 2024],
+  "test_transition": [2024, 2025],
+  "ridge_alphas": [0.01, 0.1, 1.0, 10.0, 100.0, 1000.0],
+  "inner_group_folds": 5,
+  "pa_strata": [[100, 249], [250, 499], [500, null]],
+  "matched_wrc_tolerance": 5.0,
+  "matched_war_tolerance": 0.2,
+  "illustrative_distance_quantile": 0.90,
+  "random_pair_pa_stratified": true,
+  "chadwick_register_url": "https://github.com/chadwickbureau/register/archive/refs/heads/master.zip",
+  "shrinkage_thresholds_current": {
+    "Contact%": 100,
+    "K%": 60,
+    "BB%": 120,
+    "AVG": 500,
+    "SLG": 400,
+    "ISO": 160,
+    "HardHit%": 50,
+    "Barrel%": 50,
+    "O-Swing%": 100,
+    "Swing%": 100,
+    "Spd": 0,
+    "MaxEV": 0,
+    "Def": 0,
+    "BsR": 0,
+    "UBR": 0,
+    "wSB": 0
+  },
+  "feature_groups": {
+    "Contact": ["Contact%", "K%", "AVG", "xBA", "SwStr%"],
+    "Power": ["ISO", "SLG", "HardHit%", "Barrel%", "maxEV", "EV", "HR/FB"],
+    "Speed": ["Spd", "BsR", "UBR", "wSB"],
+    "Defense": ["Def", "Fld"],
+    "Discipline": ["BB%", "O-Swing%", "Swing%", "BB/K"]
+  }
+}
+

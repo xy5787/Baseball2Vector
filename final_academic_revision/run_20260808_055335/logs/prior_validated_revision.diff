@@ -1,0 +1,235 @@
+--- original.tex
++++ prior_validated_revision.tex
+@@ -9,10 +9,11 @@
+ %  3) Copy the three figures from outputs/figures/ into a
+ %     figures/ folder in the Overleaf project:
+ %       - fig1_zscore_area_vs_war.png
+-%       - fig2_radar_witt_vs_rutschman.png
++%       - matched_profile_distances.png
+ %       - roi_coefficients.png
+-%  All numbers in this draft are verified against
+-%  data/processed/v3_results.csv and outputs/tables/ in the repo.
++%  Numbers in this draft are verified against data/processed/
++%  v3_results.csv, outputs/tables/, and the versioned artifacts in
++%  academic_validation_experiments/results/ and tables/.
+ % ============================================================
+ 
+ \documentclass[10pt,twocolumn,letterpaper]{article}
+@@ -34,7 +35,7 @@
+ \begin{document}
+ 
+ %%%%%%%%% TITLE
+-\title{Baseball2Vector: An Interpretable Five-Tool Representation of MLB Position Players}
++\title{Baseball2Vector: An Interpretable Five-Dimensional Skill Representation of MLB Position Players}
+ 
+ \author{Jaeseok Choi\\
+ I2SLAB, Sungkyunkwan University\\
+@@ -45,7 +46,7 @@
+ 
+ %%%%%%%%% ABSTRACT
+ \begin{abstract}
+-Modern baseball evaluates players through a proliferation of statistics---raw physical measurements, sabermetric composites such as WAR and wRC+, and the traditional 20--80 scouting scale---yet each captures only a partial view, and scalar composites compress qualitatively different profiles onto a single axis. We propose \emph{Baseball2Vector}, a framework that represents each MLB position-player season as a five-dimensional vector across Power, Contact, Plate Discipline, Defense, and Speed. These dimensions are inspired by, but are not identical to, the traditional five scouting tools; their values are reported on a bounded 20--80-formatted relative scale and should not be interpreted as professional scout grades. Using FanGraphs statistics for 2{,}309 hitter-seasons (2021--2025, $\geq$100 PA), we compare per-dimension Z-score averaging, per-dimension PCA, and an exploratory joint variational autoencoder, and analyze the area of the resulting radar-chart pentagon as a geometric summary. Z-score averaging shows the strongest descriptive alignment with established value metrics (Pearson $r$ of 0.81, 0.65, and 0.63 against WAR, wRC+, and OPS, respectively). Because the inputs overlap with components of those metrics, these correlations are internal-consistency checks rather than independent validation. An observational regression of concurrent year-over-year dimension and value changes attains a reported five-fold cross-validated $R^2$ of 0.71; we interpret its synthetic $+5$-grade perturbations as model-sensitivity estimates, not causal counterfactuals or development prescriptions. Baseball2Vector is therefore positioned as an interpretable interface for examining player profiles, rather than as a replacement for value metrics or scouting evaluation.
++Modern baseball evaluates players through raw measurements, sabermetric composites, and the traditional 20--80 scouting scale, yet scalar summaries compress qualitatively different profiles onto one axis. We propose \emph{Baseball2Vector}, a five-dimensional season-level representation of Power, Contact, Plate Discipline, Defense, and Speed. These adapted dimensions are reported on a bounded 20--80-formatted relative scale and are not professional scout grades. Using FanGraphs statistics for 2{,}309 MLB hitter-seasons (2021--2025, $\geq$100 PA), we compare Z-score averaging, per-dimension PCA, and an exploratory joint variational autoencoder. Z-score area has the strongest descriptive alignment with WAR ($r=0.81$), although shared inputs make this an internal-consistency check rather than independent validation. In a leakage-controlled next-season evaluation, Ridge regression using only the 2024 vector predicts 2025 wRC+ with MAE 18.02, $R^2=0.280$, and Spearman $\rho=0.508$ over 358 returning players; adding age and PA gives $R^2=0.289$ but no statistically clear incremental gain. Both models outperform league-mean and carry-forward baselines, while a raw-statistic baseline could not be reconstructed from the archived processed data. Year-to-year stability is lower for low-PA observations and for Defense and Speed. Moreover, scalar-matched different players have larger standardized profile distances than same-player adjacent seasons (median 1.001 vs.\ 0.714), supporting the representation's ability to retain profile differences hidden by aggregate value. Concurrent dimension-change regressions and synthetic perturbations remain descriptive associations and sensitivity analyses, not forecasts or causal development estimates.
+ \end{abstract}
+ 
+ %%%%%%%%% BODY
+@@ -60,10 +61,10 @@
+ 
+ Our contributions are as follows:
+ \begin{itemize}
+-  \item We formalize a data-driven mapping from public season statistics to a five-dimensional, 20--80-formatted relative profile, and compare per-dimension Z-score averaging, per-dimension PCA, and an exploratory joint variational autoencoder.
+-  \item We characterize the radar-chart pentagon area as an ordering-sensitive geometric summary and report its descriptive alignment with WAR, wRC+, and OPS over 2{,}309 hitter-seasons from 2021--2025.
+-  \item We show that the simplest encoding (Z-score averaging) has the strongest internal alignment with the selected value metrics ($r=0.81$ vs.\ WAR), while separating this shared-input sanity check from external construct validation.
+-  \item We use year-over-year dimension-delta regression to quantify observational associations and local model sensitivity. Synthetic perturbations are treated as hypothesis-generating diagnostics rather than causal estimates of player development.
++  \item We formalize a mapping from public season statistics to a five-dimensional, 20--80-formatted relative profile and compare Z-score averaging, per-dimension PCA, and an exploratory joint variational autoencoder.
++  \item We distinguish descriptive alignment from prediction: Z-score area has the strongest shared-input alignment with WAR, while a season-$t$ Ridge model is evaluated prospectively against league-mean and carry-forward baselines on 2024$\to$2025.
++  \item We quantify year-to-year stability by dimension and PA stratum and show that scalar-matched players retain substantially different skill profiles.
++  \item We treat dimension-delta regression as a contemporaneous transition association and synthetic perturbations as model-sensitivity diagnostics, not forecasts, causal effects, or development prescriptions.
+ \end{itemize}
+ 
+ \section{Related Work}
+@@ -95,7 +96,7 @@
+ 
+ \subsection{Data Collection and Preprocessing}
+ \label{sec:data}
+-We collect season-level statistics from FanGraphs (via the \texttt{pybaseball} library\footnote{\url{https://github.com/jldbc/pybaseball}}) for all MLB hitters with at least 100 plate appearances in each of the 2021--2025 seasons, yielding 2{,}309 player-season rows. Each row is keyed as \emph{Player (Season)} so that repeated seasons from the same player remain identifiable rather than being treated as independent players. A data audit found one player-name collision affecting this key---two distinct major leaguers both named Max Muncy each qualified in 2025---which we resolved by relabeling the two rows using performance context (PA, WAR, wRC+) rather than dropping either qualifying season; no other name collisions, duplicate rows, or out-of-range statistics were found in the 2{,}309-row dataset. Constituent statistics are grouped by dimension as follows:
++We collect season-level statistics from FanGraphs (via the \texttt{pybaseball} library\footnote{\url{https://github.com/jldbc/pybaseball}}) for all MLB hitters with at least 100 plate appearances in each of the 2021--2025 seasons, yielding 2{,}309 player-season rows. Cross-sectional analyses retain all rows. For longitudinal analyses, display names are conservatively linked to stable FanGraphs/MLBAM identifiers through the Chadwick Register \cite{chadwickRegister}. This procedure uniquely matches 2{,}286 rows from 818 players; 23 ambiguous or unmatched rows are excluded rather than resolved from performance context. In particular, the two distinct Max Muncy rows in 2025 are both excluded from longitudinal analysis because the archived processed file lacks source identifiers. Constituent statistics are grouped by dimension as follows:
+ \begin{itemize}
+   \item \textbf{Contact}: Contact\%, K\%, AVG, xBA, SwStr\%
+   \item \textbf{Power}: ISO, SLG, HardHit\%, Barrel\%, maxEV, EV, HR/FB
+@@ -105,7 +106,9 @@
+ \end{itemize}
+ Statistics for which lower is better (K\%, SwStr\%, O-Swing\%, Swing\%) are sign-flipped before aggregation so that higher always means better.
+ 
+-Because rate statistics computed over few plate appearances are noisy, we apply empirical-Bayes-style shrinkage before scoring: each rate statistic is pulled toward its season league average using a pre-specified prior strength expressed in PA equivalents (e.g., 60 PA for K\%, 120 PA for BB\%, and 500 PA for AVG). These are heuristic hyperparameters motivated by published stabilization-point summaries \cite{fangraphsSampleSize}, rather than estimated causal or population priors. A post hoc sensitivity check (Sec.~\ref{sec:results}) finds the headline alignment correlations move by at most 0.003 under substantially stronger shrinkage than currently applied, suggesting the specific thresholds are not a load-bearing choice, at least in that direction. Statistics that are already composite measures (e.g., Spd and Def) are left untouched. All standardization is then computed \emph{within season}---each statistic is Z-scored against that season's population---to respect era and run-environment differences. For predictive evaluation, these preprocessing parameters must be fitted using training data only; the present pooled alignment analysis is descriptive and does not constitute an out-of-sample test.
++FanGraphs defines \emph{Def} as fielding runs plus positional adjustment \cite{fangraphsDef}. Consequently, averaging standardized Def and Fld repeats the fielding component, mixes fielding with positional value, and retains playing-time dependence. We preserve the published construction for reproducibility but treat Defense as the least cleanly identified dimension.
++
++Because rate statistics computed over few plate appearances are noisy, we apply empirical-Bayes-style shrinkage before scoring: each rate statistic is pulled toward its season league average using a pre-specified prior strength expressed in PA equivalents (e.g., 60 PA for K\%, 120 PA for BB\%, and 500 PA for AVG). These are heuristic hyperparameters motivated by published stabilization-point summaries \cite{fangraphsSampleSize}, rather than estimated population priors. Statistics that are already composite measures (e.g., Spd and Def) are left untouched. All standardization is computed \emph{within season} to respect era and run-environment differences. The archived processed file contains only final dimension scores, not the pre-shrinkage constituent statistics; therefore literal no-shrinkage and stronger-shrinkage reconstructions were not possible in the present audit, and we make no robustness claim for these hyperparameters.
+ 
+ \subsection{Encoding Schemes}
+ Each dimension $t$ has a set of constituent statistics $S_t$. We compare three ways of collapsing $S_t$ into a single dimension score.
+@@ -135,7 +138,13 @@
+ 
+ \subsection{Dimension-Delta Regression and Model Sensitivity}
+ \label{sec:roi-method}
+-To study how concurrent changes in the representation relate to changes in established metrics, we construct a transition dataset of all consecutive-season pairs of the same player (1{,}427 pairs), with features $\Delta\mathbf{v} \in \mathbb{R}^5$ and targets $\Delta$wRC+, $\Delta$WAR, and $\Delta$OPS. We fit (i) a linear regression on the five deltas and (ii) a random forest on ten features (the five starting levels plus the five deltas). Both are evaluated under three cross-validation schemes: (i) pooled five-fold cross-validation over transition rows, as overlapping transitions from the same player may otherwise share player-specific information across folds; (ii) player-grouped five-fold cross-validation (\texttt{GroupKFold} keyed on player identity, so no player's transitions appear in both a fold's training and test split), which additionally refits the 20--80 scaling of Sec.~\ref{sec:method} on each training fold only; and (iii) a forward-time holdout that trains on all transitions ending in 2023 or earlier and evaluates only on 2024$\to$2025 transitions, the closest available approximation to a genuinely prospective forecast. We probe local model sensitivity by applying a synthetic $+5$-grade perturbation to each dimension in turn and recording the random forest's change in predicted $\Delta$wRC+. This perturbation is not a causal intervention, and ``return on investment'' is not claimed because neither intervention cost nor causal identification is modeled.
++To study how concurrent changes in the representation relate to changes in established metrics, we construct 1{,}414 consecutive-season transitions from 567 stably identified players, with features $\Delta\mathbf{v} \in \mathbb{R}^5$ and targets $\Delta$wRC+, $\Delta$WAR, and $\Delta$OPS. We fit (i) a linear regression on the five deltas and (ii) a random forest on the five starting levels and five deltas. We compare shuffled five-fold cross-validation, player-grouped five-fold cross-validation, and a temporally held-out association check trained on transitions ending by 2023 ($n=701$) and tested on 2024$\to$2025 ($n=358$). Even the last split is not a forecast: every predictor $\Delta\mathbf{v}$ contains season-$t+1$ information. We probe local fitted-model sensitivity by applying a synthetic $+5$-grade perturbation to one dimension at a time. This is neither a causal intervention nor an estimate of return on investment.
++
++\subsection{Prospective and Robustness Validation}
++\label{sec:validation-method}
++For a genuine next-season test, predictors contain only information observed through season $t$. We train on 1{,}056 returning-player transitions ending in 2022--2024 and reserve all 358 matched 2024$\to$2025 transitions as a fixed test set. The primary target is 2025 wRC+; a rate-normalized secondary target is WAR per 600 PA (WAR600). We compare a training-set league-mean baseline, previous-season carry-forward, Ridge regression using only the five season-$t$ dimensions, and Ridge using the vector plus age and PA. Ridge regularization is selected using player-grouped folds inside the training period; imputation and scaling are fitted on training data only. A raw-statistic baseline was planned but cannot be reconstructed because the archived processed file does not contain the constituent statistics. We report MAE, $R^2$, and Spearman $\rho$, with 95\% intervals from 2{,}000 player-level bootstrap resamples of the fixed test set.
++
++We assess temporal reliability separately from prediction. For each adjacent-season pair, we compute dimension-wise Pearson correlations and a standardized Euclidean distance after standardizing each dimension over the pooled cohort. Correlations use 2{,}000 player-cluster bootstrap resamples and are stratified by the lower PA of the two seasons. Finally, we ask whether the vector distinguishes profiles hidden by scalar value. Same-player adjacent-season distances are compared with distances between different players in the same season matched closely on wRC+ and WAR and, as a reference, PA-stratified random same-season pairs. Because matching reuses observations, intervals describe this constructed comparison rather than an independent population experiment.
+ 
+ \section{Results}
+ \label{sec:results}
+@@ -168,6 +177,29 @@
+ 
+ Four observations follow. First, Z-score averaging has the strongest descriptive alignment with all three metrics, with PCA close behind and the JointVAE lower. This result favors the transparent baseline for the present purpose, but it does not show that learned encodings are generally inferior. Second, although Z-score's and PCA's marginal confidence intervals in Table~\ref{tab:corr} overlap substantially, a paired bootstrap on the same player resamples---which accounts for the fact that all three encodings are computed on the same players and are themselves highly correlated with each other---shows Z-score's edge over PCA is small (0.01--0.02 in $r$) but statistically significant for all three metrics, with a larger, likewise significant gap to JointVAE (0.05--0.16); so the ordering in Table~\ref{tab:corr} is not an artifact of sampling noise, even though eyeballing the marginal intervals alone would suggest otherwise. Third, the observed ceiling near $r \approx 0.8$ versus WAR is consistent with equal weighting across dimensions and with the different construction of WAR; it should not be interpreted as a geometry-independent theoretical limit. Fourth, recomputing area under every axis permutation yields narrow correlation bands for all three encodings ($r$ vs.\ WAR: Z-score $[0.79, 0.82]$, PCA $[0.78, 0.81]$, JointVAE $[0.74, 0.76]$; comparable bands hold for wRC+ and OPS), although individual rankings can remain unstable. Notably, PCA is the most permutation-sensitive of the three encodings, both in absolute terms and as a fraction of its own correlation, so Z-score's advantage over the alternatives should be attributed to its higher, significant correlation with value metrics rather than to any special robustness to the pentagon's axis ordering.
+ 
++\subsection{Prospective Prediction and Temporal Stability}
++\label{sec:prospective-results}
++Table~\ref{tab:prospective} reports the fixed 2024$\to$2025 test. The five-dimensional Ridge model improves wRC+ MAE over carry-forward by 4.33 points (95\% paired-bootstrap CI $[2.89,5.87]$), improves $R^2$ by 0.391 $[0.261,0.540]$, and improves rank correlation by 0.073 $[0.011,0.138]$. Adding age and PA changes MAE by only 0.005 $[-0.371,0.370]$ and $R^2$ by 0.009 $[-0.013,0.031]$ relative to the vector-only model; thus these two covariates show no clear incremental benefit in this test. The secondary WAR600 result is directionally consistent: the augmented model obtains MAE 1.553 $[1.420,1.686]$, $R^2=0.223$ $[0.134,0.305]$, and $\rho=0.439$ $[0.350,0.529]$, whereas carry-forward has negative $R^2$ ($-0.140$). These results establish modest next-season signal among players who return with at least 100 PA, not universal player forecasting. A constituent raw-statistic model is unavailable, so the experiment does not establish that compression into five dimensions improves on all source information.
++
++\begin{table*}[t]
++\centering
++\caption{Prospective 2025 wRC+ prediction for 358 returning players. Models are trained on 1{,}056 earlier transitions. Brackets are 95\% player-level bootstrap intervals on the fixed test set. Spearman correlation is undefined for the constant league-mean predictor.}
++\label{tab:prospective}
++\small
++\begin{tabular}{lccc}
++\toprule
++Model & MAE $\downarrow$ & $R^2$ $\uparrow$ & Spearman $\rho$ $\uparrow$ \\
++\midrule
++League mean & 22.27 [20.51, 24.00] & $-0.001$ [$-0.016$, 0.000] & --- \\
++Previous-season wRC+ & 22.35 [20.51, 24.39] & $-0.102$ [$-0.298$, 0.078] & 0.449 [0.355, 0.535] \\
++B2V Ridge & \textbf{18.02} [16.51, 19.68] & 0.280 [0.179, 0.375] & 0.508 [0.423, 0.588] \\
++B2V Ridge + age + PA & \textbf{18.02} [16.52, 19.62] & \textbf{0.289} [0.192, 0.382] & \textbf{0.522} [0.438, 0.600] \\
++\bottomrule
++\end{tabular}
++\end{table*}
++
++Across 1{,}414 stable-ID adjacent-season pairs, player-clustered correlations are highest for Discipline (0.760; 95\% CI $[0.726,0.789]$), Contact (0.734; $[0.697,0.765]$), and Power (0.730; $[0.691,0.761]$), and lower for Speed (0.626; $[0.580,0.668]$) and Defense (0.568; $[0.516,0.614]$). Reliability rises with playing time: for 100--249 PA pairs, correlations range from 0.463 (Defense) to 0.719 (Discipline), whereas for 500+ PA they range from 0.661 to 0.789. This supports interpreting the vectors as noisy season summaries, especially at low PA, rather than fixed latent traits. A median raw cosine similarity of 0.996 is not emphasized because the positive 20--80 offset mechanically inflates it; standardized Euclidean distance is more informative.
++
+ \subsection{Qualitative Analysis: Profiles Behind Geometric Summaries}
+ Table~\ref{tab:top10} lists the top-10 season-rows by pentagon area (Z-score encoding) with their established metrics. Elite seasons by Ronald Acu\~na Jr., Shohei Ohtani, Aaron Judge, Juan Soto, Jose Ramirez, and Bobby Witt Jr.\ appear, but area also ranks profiles whose established offensive values differ substantially. Judge's 2024 vector is $(58, 79, 44, 37, 65)$ in (Contact, Power, Speed, Defense, Discipline) order---extreme Power with elite Discipline---while Soto's 2024 vector $(64, 66, 29, 44, 71)$ is carried by Discipline, and Witt's 2024 vector $(67, 60, 53, 60, 41)$ is more distributed. Ohtani's 2024 season $(59, 74, 72, 37, 48)$ pairs elite Power with elite Speed. These examples illustrate profile readability rather than external validation of the scores.
+ 
+@@ -197,14 +229,16 @@
+ 
+ The list also contains an instructive outlier: Nicky Lopez's 2021 season ranks eighth by area despite a merely league-average bat (104 wRC+, .744 OPS). His vector $(63, 30, 66, 71, 48)$ is the mirror image of a slugger's---elite Defense and Speed with well below-average Power---and the symmetric area rewards that balance. Notably, area here agrees with WAR (5.5, driven by defense and baserunning) far better than with the offense-only metrics, illustrating both what the equal-weight summary captures and what it overweights.
+ 
+-Figure~\ref{fig:radar} makes a profile contrast concrete. Bobby Witt Jr.\ (2024) is represented primarily through Contact, Power, and Speed, whereas Adley Rutschman's 2022 vector $(58, 45, 49, 63, 58)$ is stronger in Defense and Discipline. Their WAR values are not comparable (10.5 versus 5.6), so this pair is used only to illustrate divergent profile shapes and not as evidence that players with equal overall value are interchangeable.
++\subsection{Scalar-Matched Profile Diversity}
++\label{sec:matched-profile}
++Figure~\ref{fig:matched-profile} strengthens the qualitative claim with a pre-specified matching analysis. The median standardized distance is 0.714 for same-player adjacent seasons (95\% bootstrap CI $[0.696,0.726]$), 1.001 for different players closely matched on both wRC+ and WAR ($[0.980,1.028]$), and 1.197 for PA-stratified random same-season pairs ($[1.176,1.228]$). The scalar-matched minus same-player median difference is 0.288 $[0.263,0.319]$. Thus aggregate value matching removes some, but not most, profile heterogeneity. As an illustration selected by a fixed rule---both players at 400+ PA and nearest the 90th percentile of matched-pair distance---Alex Verdugo and Luis Robert Jr.\ in 2024 have nearly identical scalar outcomes (wRC+ 85 vs.\ 84; WAR 0.6 vs.\ 0.6) but a distance of 1.787. Verdugo is higher in Contact and Discipline, while Robert is higher in Power and Speed. The distributional comparison, rather than this single example, is the primary evidence that the vector preserves information hidden by scalar value.
+ 
+-\begin{figure}[t]
++\begin{figure*}[t]
+ \centering
+-\includegraphics[width=\linewidth]{figures/fig2_radar_witt_vs_rutschman.png}
+-\caption{Radar-chart comparison of Bobby Witt Jr.\ (2024) and Adley Rutschman (2022). The players have different WAR values (10.5 and 5.6); the figure illustrates profile shape rather than matched overall value. Scores are 20--80-formatted relative values, not scout grades.}
+-\label{fig:radar}
+-\end{figure}
++\includegraphics[width=0.92\linewidth]{figures/matched_profile_distances.png}
++\caption{Standardized five-dimensional distances for same-player adjacent seasons, different players matched on wRC+ and WAR, and PA-stratified random same-season pairs. Right: a rule-selected scalar-matched example. Scores remain cohort-relative, not scouting grades.}
++\label{fig:matched-profile}
++\end{figure*}
+ 
+ \subsection{Dimension-Delta Regression and Model Sensitivity}
+ \label{sec:roi-results}
+@@ -212,25 +246,25 @@
+ 
+ \begin{table*}[t]
+ \centering
+-\caption{Cross-validation comparison for the dimension-delta regression (1{,}427 consecutive-season transitions). Pooled: shuffled 5-fold \texttt{KFold}, the original scheme. Player-grouped: \texttt{GroupKFold} keyed on player identity, so no player's transitions appear in both a fold's training and test split; additionally refitting the 20--80 scaling within each training fold changes every value by $<10^{-3}$ and is therefore not shown as a separate column. Forward-time holdout: trained on transitions ending $\leq$2023 ($n=707$), tested only on 2024$\to$2025 transitions ($n=362$).}
++\caption{$R^2$ for contemporaneous dimension-delta associations over 1{,}414 stable-ID transitions. Pooled uses shuffled five-fold \texttt{KFold}; grouped uses player-level \texttt{GroupKFold}; temporal trains on transitions ending by 2023 ($n=701$) and tests on 2024$\to$2025 ($n=358$). The temporal column is not prospective because $\Delta\mathbf{v}$ includes the outcome season.}
+ \label{tab:cv}
+ \small
+ \begin{tabular}{lcccccc}
+ \toprule
+- & \multicolumn{2}{c}{Pooled KFold} & \multicolumn{2}{c}{Player-grouped} & \multicolumn{2}{c}{Forward-time holdout} \\
++ & \multicolumn{2}{c}{Pooled KFold} & \multicolumn{2}{c}{Player-grouped} & \multicolumn{2}{c}{Temporal holdout} \\
+ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+ Target & LR & RF & LR & RF & LR & RF \\
+ \midrule
+-$\Delta$wRC+ & 0.707 & 0.677 & 0.708 & 0.679 & 0.702 & 0.636 \\
+-$\Delta$WAR  & 0.704 & 0.673 & 0.703 & 0.677 & 0.692 & 0.644 \\
+-$\Delta$OPS  & 0.707 & 0.678 & 0.708 & 0.678 & 0.728 & 0.691 \\
++$\Delta$wRC+ & 0.707 & 0.678 & 0.708 & 0.680 & 0.701 & 0.634 \\
++$\Delta$WAR  & 0.704 & 0.662 & 0.701 & 0.666 & 0.690 & 0.645 \\
++$\Delta$OPS  & 0.708 & 0.684 & 0.709 & 0.681 & 0.728 & 0.693 \\
+ \bottomrule
+ \end{tabular}
+ \end{table*}
+ 
+-Player-grouped cross-validation produces scores statistically indistinguishable from the pooled scheme across all three targets and both models (Table~\ref{tab:cv}), and refitting the 20--80 scaling on each training fold only changes nothing further, to the reported precision---consistent with linear-regression and random-forest predictions being invariant to the per-feature affine rescaling that step performs. This indicates the pooled estimate is not an artifact of within-player leakage for this model class and feature set. The forward-time holdout shows a modest but real gap for the random forest (0.68$\to$0.64 for both $\Delta$wRC+ and $\Delta$WAR), while the linear model remains comparatively stable and even improves for $\Delta$OPS; we read the forward-time result as the more honest estimate of forecasting a genuinely future season, and the random forest's gap as evidence it captures some era-specific structure that within-window, player-grouped cross-validation alone cannot detect. These values quantify association under each respective split, not causal explanation. In the fitted linear model, a one-point change in Power is associated with $+3.2$ wRC+, Contact with $+2.2$, and Discipline with $+0.7$, conditional on the other dimension changes. Speed and Defense coefficients are near zero for the offense-only wRC+ target and positive for WAR. Because the inputs and targets share underlying season statistics, these coefficients are descriptive partial associations rather than exchange rates.
++Player-grouped scores closely track pooled scores across targets and models (Table~\ref{tab:cv}), indicating that the reported fit is not primarily caused by overlapping transitions from the same player. The random forest weakens under temporal separation, while the linear model is comparatively stable. This pattern may reflect time-specific nonlinear structure, but it remains a contemporaneous association because both $\Delta\mathbf{v}$ and the target use the ending season. In the stable-ID linear model, a one-point change in Power is associated with $+3.15$ wRC+, Contact with $+2.17$, and Discipline with $+0.70$, conditional on the other dimension changes; Speed ($-0.13$) and Defense ($+0.04$) are near zero for this offense-only target. Shared underlying statistics make these descriptive partial associations rather than causal exchange rates.
+ 
+-Applying a synthetic $+5$-grade perturbation to each dimension of each 2025 player produces player-specific model responses. For Aaron Judge, the largest predicted response is assigned to Power ($+12.4$ wRC+); for Byron Buxton, it is assigned to Contact ($+14.0$ wRC+). These examples show how the model can be inspected, but there is no observed ground truth establishing that the selected dimension is the player's optimal development target. The perturbations may also leave the joint data manifold. We therefore report them as sensitivity examples, not counterfactual outcomes, ROI, or prescriptions.
++Applying a synthetic $+5$-grade perturbation to each dimension produces player-specific fitted-model responses. For Aaron Judge, the largest response is assigned to Power ($+12.6$ wRC+); for Byron Buxton, it is assigned to Contact ($+14.3$ wRC+). There is no observed ground truth that either dimension is the player's optimal development target, and perturbations may leave the joint data manifold. These are sensitivity examples, not counterfactual outcomes, ROI, or prescriptions.
+ 
+ \begin{figure}[t]
+ \centering
+@@ -242,42 +276,19 @@
+ \subsection{Sensitivity Analysis}
+ Because pentagon area sums adjacent products (Eq.~\ref{eq:area}), it is not permutation-invariant. Population-level correlations vary only within $\pm 0.02$ across orderings, but individual rankings can change substantially as within-player dimension variance increases. Thus, the ``spiky'' profiles for which the full vector is most informative are also those for which radar-chart area is least stable. This finding limits area as a comparison metric and supports using it only as an auxiliary geometric descriptor.
+ 
+-\subsection{Exploratory External Comparison}
+-\label{sec:external-pilot}
+-As a small, qualitative check against external construct validity, we compared six recently graduated top prospects' first full-plate-appearance-season Baseball2Vector vectors against publicly available, individually cited pre-MLB scouting grades (Baseball America; exact source URLs are released with the repository). Table~\ref{tab:pilot} restricts the comparison to the three dimensions with a plausible cross-taxonomy mapping (Contact$\leftrightarrow$Hit, Power$\leftrightarrow$Power, Speed$\leftrightarrow$Run); Defense and Plate Discipline are excluded from the table because public sources either split defense into separate Field and Arm grades that Baseball2Vector does not, or, for Discipline, do not report a 20--80 grade at all. The two scales are not numerically interchangeable: public grades are calibrated against the full population of minor-league prospects, whereas Baseball2Vector's scale is calibrated only against players who already reached MLB regular status, so we discuss relative profile shape rather than literal number matching.
++Several planned construction-level checks could not be completed from the archived output: no-/double-shrinkage variants, leave-one-statistic-out encodings, alternative Defense definitions, a constituent raw-statistic predictor, and multi-seed JointVAE stability all require source-level features or model artifacts that are absent. Their absence should be read as unresolved robustness, not as negative evidence. The available results support the usefulness of the released five-dimensional output, but do not identify which upstream design choices are necessary.
+ 
+-Speed showed the most consistent agreement---for example, Corbin Carroll's Speed score of 78.8 closely tracked a scouted 80-grade run tool, the closest match in the panel. Power showed the most consistent disagreement, reading systematically lower in Baseball2Vector than the scouted raw-power grade (e.g.\ Julio Rodr\'iguez, Elly De La Cruz), plausibly because scouted power grades often describe raw batting-practice ceiling while Baseball2Vector's Power dimension is built entirely from in-game production statistics---a genuine difference in what is measured, not necessarily an error. With six players and two non-commensurable scales, this pilot is hypothesis-generating only and does not establish external validity (Limitations, below).
+-
+-\begin{table}[t]
+-\centering
+-\caption{Exploratory pilot: Baseball2Vector (Z-score) vs.\ public pre-MLB scouting grades (Baseball America), restricted to the three dimensions with a plausible cross-taxonomy mapping. B2V values use each player's first full-PA MLB season; public grades predate MLB debut. Not a validation sample ($n=6$); see Sec.~\ref{sec:external-pilot}.}
+-\label{tab:pilot}
+-\scriptsize
+-\setlength{\tabcolsep}{3pt}
+-\begin{tabular}{lccc}
+-\toprule
+-Player (B2V season) & Contact / Hit & Power / Power & Speed / Run \\
+-\midrule
+-Witt Jr.\ (2022)      & 52.9 / 60 & 46.3 / 60 & 64.0 / 60 \\
+-Rodr\'iguez (2022)    & 49.9 / 70 & 58.6 / 80 & 54.5 / --- \\
+-Rutschman (2022)      & 58.1 / 70 & 44.5 / --- & 48.5 / --- \\
+-Henderson (2023)      & 50.6 / 60 & 54.4 / 70 & 55.5 / 60 \\
+-Carroll (2023)        & 58.5 / 60 & 49.2 / 60 & 78.8 / 80 \\
+-De La Cruz (2023)     & 44.1 / 42 & 51.7 / 70 & 60.7 / 70 \\
+-\bottomrule
+-\end{tabular}
+-\end{table}
+ 
+ \section{Conclusion and Limitations}
+ \label{sec:conclusion}
+ 
+-We presented Baseball2Vector, a mapping from public season statistics to an interpretable five-dimensional profile reported on a 20--80-formatted relative scale. Across 2{,}309 hitter-seasons (2021--2025), Z-score averaging showed the strongest descriptive alignment with established value metrics ($r=0.81$ vs.\ WAR). Qualitative cases illustrate how the vector exposes dimension-level differences that its geometric area discards. Dimension-delta regression produced a pooled five-fold $R^2$ of 0.71 for $\Delta$wRC+, a figure that player-grouped cross-validation shows is not primarily a within-player leakage artifact (Sec.~\ref{sec:roi-results}), though it remains an observational, shared-input association rather than evidence of causal development effects.
++We presented Baseball2Vector, a mapping from public season statistics to an interpretable five-dimensional, cohort-relative profile. The strongest evidence is no longer the shared-input area correlation alone. In a fixed 2024$\to$2025 test, the five dimensions carry modest but statistically supported next-season wRC+ signal beyond league-mean and carry-forward baselines; scalar-matched players also remain substantially farther apart in profile space than the same player across adjacent seasons. Together, these findings support Baseball2Vector as a compact descriptive interface with some predictive content. They do not validate it as a scouting scale, show that it is superior to its unavailable raw inputs, or justify causal development recommendations.
+ 
+ \paragraph{Limitations.}
+-The central limitation is circularity: several input statistics also contribute directly or indirectly to WAR, wRC+, or OPS, so high alignment partly reflects re-expression of shared information rather than independent validation. The proposed dimensions also differ from the canonical Hit--Power--Run--Field--Throw framework; a small pilot comparison against publicly available scouting grades for six recently graduated prospects (Sec.~\ref{sec:external-pilot}) is suggestive but far too small to establish construct validity. Min--max mapping produces cohort-dependent 20--80-formatted scores rather than classical scouting grades. Within and across dimensions, correlated inputs can double-count related signals; defensive composites may also mix fielding performance, position, playing time, and opportunity. Pentagon area is equal-weighted and ordering-sensitive. Repeated seasons and overlapping transitions from the same player create dependence; player-grouped and forward-time cross-validation (Sec.~\ref{sec:roi-results}) indicate the pooled dimension-delta estimate is not primarily a leakage artifact for the model classes considered, though the random forest's forward-time degradation suggests some era-specific structure that within-window grouped cross-validation alone cannot detect. Finally, the synthetic $+5$ perturbations are correlational model-sensitivity probes that inherit survivorship, role-change, age, injury, and playing-time confounds. Coverage is restricted to MLB hitters with $\geq$100 PA and excludes pitchers, minor leaguers, and most short-sample players. Exact reproduction additionally requires a versioned public repository containing the extraction date, processed data, preprocessing code, package versions, random seeds, and fold assignments.
++The area correlations remain circular because several inputs contribute directly or indirectly to WAR, wRC+, or OPS, and external construct validity has not yet been established. Min--max scores depend on the cohort; correlated inputs can double-count signals; and Defense is particularly problematic because Def contains Fld plus positional adjustment, so the current average repeats fielding while mixing position, opportunity, and playing time. The prospective test includes only players who returned for at least 100 PA in 2025, creating survivorship and role-selection bias; its bootstrap quantifies test-sample uncertainty for a fixed modeling procedure, not uncertainty over every data-collection and model-selection decision. Matching analyses reuse focal and comparison players, so their intervals apply to the constructed matched sample. Most importantly, the archived file lacks constituent statistics and fitted JointVAE artifacts, preventing raw-input comparison, shrinkage and leave-one-statistic-out checks, alternative Defense constructions, and multi-seed latent stability analysis. Delta regressions use outcome-season changes and therefore remain contemporaneous even under temporal splitting. Synthetic perturbations inherit age, injury, role, and playing-time confounding and may leave the observed data manifold.
+ 
+ \paragraph{Future directions.}
+-The next priority is external validation at scale rather than a more complex encoder. First, the pilot comparison of Sec.~\ref{sec:external-pilot} should be extended well beyond six players, ideally with a scouting organization's cooperation, before any construct-validity claim stronger than a qualitative pattern is made. Second, while transition models have now been re-evaluated with player-grouped cross-validation, fold-refit preprocessing, and a forward-time holdout (Sec.~\ref{sec:roi-results}), raw-statistic, previous-season, and no-change baselines with uncertainty intervals remain to be reported, and the random forest's forward-time degradation warrants direct investigation into whether era-specific offensive-environment shifts are the cause. Third, synthetic perturbations should be replaced or complemented by evaluation against subsequently realized player changes, with age, role, position, playing time, and injury status modeled explicitly. Only after these tests should the representation be considered for predictive or development-support applications.
++The immediate priority is to preserve a versioned source export with stable IDs and every constituent statistic when FanGraphs access becomes available again. That would permit leakage-controlled raw-statistic baselines, shrinkage and feature-ablation studies, alternative fielding-only and position-adjusted Defense definitions, and multi-seed JointVAE evaluation. External construct validation should use independently verifiable reference data. Prospective tests should include attrition modeling and multiple future seasons, while development claims require subsequently realized changes and explicit adjustment for age, injury, role, position, and playing time. Until then, the appropriate use is profile description, comparison, and hypothesis generation.
+ 
+ %%%%%%%%% REFERENCES
+ \begin{thebibliography}{99}
+@@ -302,6 +313,16 @@
+ \newblock Sample size.
+ \newblock \url{https://library.fangraphs.com/principles/sample-size/}.
+ 
++\bibitem{fangraphsDef}
++FanGraphs Sabermetrics Library.
++\newblock Defensive Runs Above Average (Def).
++\newblock \url{https://library.fangraphs.com/defense/def/}.
++
++\bibitem{chadwickRegister}
++Chadwick Baseball Bureau.
++\newblock Chadwick Register: a repository of baseball player identifiers.
++\newblock \url{https://github.com/chadwickbureau/register}.
++
+ \bibitem{mikolov2013}
+ T. Mikolov, K. Chen, G. Corrado, and J. Dean.
+ \newblock Efficient estimation of word representations in vector space.

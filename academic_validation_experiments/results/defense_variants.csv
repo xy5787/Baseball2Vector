@@ -1,0 +1,6 @@
+variant,status,includes_position_adjustment,fielding_signal_counted_twice,playing_time_dependent,overall_year_to_year_spearman,ci_low,ci_high,reason
+current_mean_of_Def_and_Fld,available_saved_representation_only,True,True,True,0.5678210806114199,0.516271627323204,0.613894575622899,Def = Fld + positional adjustment; averaging standardized Def and Fld repeats the Fld signal.
+Def_only,not_run_missing_raw,True,False,True,,,,Raw Def is absent from the committed processed input.
+Fld_only,not_run_missing_raw,False,False,True,,,,Raw Fld is absent from the committed processed input.
+fielding_only_position_excluded,not_run_missing_raw,False,False,True,,,,"Equivalent to Fld-only in the documented source, but Fld is unavailable."
+innings_normalized_fielding,not_run_missing_raw,False,False,False,,,,Defensive innings and raw fielding runs are both absent.

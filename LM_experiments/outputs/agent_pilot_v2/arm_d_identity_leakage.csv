@@ -1,0 +1,13 @@
+pilot_id,arm,subject,identity_leak,invalid_comparable_format_count,comparable_count
+pilot_v2_001,agent_d,Kyle Tucker,False,0,10
+pilot_v2_002,agent_d,Mookie Betts,False,0,10
+pilot_v2_003,agent_d,Yandy Diaz,False,0,10
+pilot_v2_004,agent_d,Nico Hoerner,False,0,10
+pilot_v2_005,agent_d,Masataka Yoshida,False,0,10
+pilot_v2_006,agent_d,Zach Neto,False,0,10
+pilot_v2_001,agent_d_v21,Kyle Tucker,False,0,10
+pilot_v2_002,agent_d_v21,Mookie Betts,False,0,10
+pilot_v2_003,agent_d_v21,Yandy Diaz,False,0,10
+pilot_v2_004,agent_d_v21,Nico Hoerner,False,0,10
+pilot_v2_005,agent_d_v21,Masataka Yoshida,False,0,10
+pilot_v2_006,agent_d_v21,Zach Neto,False,0,10

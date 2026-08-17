@@ -103,6 +103,36 @@ baseball2vec/
 
 ---
 
+## Reproducing the Revision Pipeline (Phases 0–4)
+
+A methodological/reproducibility revision pass (data audit, leakage-resistant CV, confidence
+intervals, ablations, external pilot) lives in `scripts/revision/`, with a running dated log in
+[`REVISIONS.md`](REVISIONS.md). It runs entirely against the committed, already-processed
+`data/processed/v3_results.csv` — it does **not** require re-fetching raw FanGraphs data — except
+where a phase explicitly notes that raw data is required and unavailable (Phase 3a; see
+`REVISIONS.md`).
+
+```bash
+python scripts/revision/phase0_data_audit.py        # -> data/v3_results_clean.csv (audited data)
+python scripts/revision/phase1_grouped_cv.py         # player-grouped CV for the ROI regression
+python scripts/revision/phase2_confidence_intervals.py  # cluster-bootstrap CIs for Table 1
+python scripts/revision/phase3_ablations.py          # shrinkage + permutation ablations
+python scripts/revision/phase4_external_pilot.py     # scouting-grade pilot comparison
+python scripts/revision/phase5_repro_package.py      # environment + fold-assignment audit trail
+```
+
+Every phase after Phase 0 reads `data/v3_results_clean.csv` (not the original `v3_results.csv`).
+All outputs are written to `outputs/revision/<phase_name>/`. Random seed 42 is used throughout
+(`GroupKFold`/`KFold` shuffling, `RandomForestRegressor`, the Phase 2 bootstrap RNG); Phase 1's
+exact player→fold assignments are saved to
+`outputs/revision/phase5_reproducibility/phase1_fold_assignments.csv` for audit. The exact package
+versions used to generate these outputs are recorded in
+`outputs/revision/phase5_reproducibility/environment_used.txt` — note that this sandbox's installed
+`pandas`/`numpy` versions drift slightly from `requirements.txt`'s pins (see that file for the
+exact diff); `matplotlib` and `pybaseball` match the pinned versions exactly.
+
+---
+
 ## Known Limitations
 
 - This is research code written for a conference presentation, not a production system.

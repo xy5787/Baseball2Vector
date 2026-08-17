@@ -1,0 +1,361 @@
+feature_variant,model,alpha,fold,mae,selected
+within_input_season_standardized,Calibrated wRC+ Ridge,0.01,0,19.73843052919572,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.01,1,19.29841251578339,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.01,2,21.12291463454604,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.01,3,21.057592912770517,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.01,4,18.80266147980143,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.01,mean,20.004002414419418,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.1,0,19.738479936166637,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.1,1,19.298299522363376,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.1,2,21.122940445197127,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.1,3,21.057524949441998,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.1,4,18.802675710844944,False
+within_input_season_standardized,Calibrated wRC+ Ridge,0.1,mean,20.00398411280282,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1.0,0,19.738973427024906,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1.0,1,19.29717091042667,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1.0,2,21.123198249668466,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1.0,3,21.056846111472286,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1.0,4,18.802817854746635,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1.0,mean,20.00380131066779,False
+within_input_season_standardized,Calibrated wRC+ Ridge,10.0,0,19.74385112765094,False
+within_input_season_standardized,Calibrated wRC+ Ridge,10.0,1,19.28601547244175,False
+within_input_season_standardized,Calibrated wRC+ Ridge,10.0,2,21.127423354172997,False
+within_input_season_standardized,Calibrated wRC+ Ridge,10.0,3,21.052178742018036,False
+within_input_season_standardized,Calibrated wRC+ Ridge,10.0,4,18.804222834995983,False
+within_input_season_standardized,Calibrated wRC+ Ridge,10.0,mean,20.002738306255942,True
+within_input_season_standardized,Calibrated wRC+ Ridge,100.0,0,19.809626156231666,False
+within_input_season_standardized,Calibrated wRC+ Ridge,100.0,1,19.20419938405253,False
+within_input_season_standardized,Calibrated wRC+ Ridge,100.0,2,21.17716346297522,False
+within_input_season_standardized,Calibrated wRC+ Ridge,100.0,3,21.020092251564513,False
+within_input_season_standardized,Calibrated wRC+ Ridge,100.0,4,18.829468560943997,False
+within_input_season_standardized,Calibrated wRC+ Ridge,100.0,mean,20.008109963153586,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1000.0,0,20.7171536818498,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1000.0,1,19.563237449155388,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1000.0,2,21.815043228132613,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1000.0,3,21.374109715792468,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1000.0,4,19.699495560483786,False
+within_input_season_standardized,Calibrated wRC+ Ridge,1000.0,mean,20.63380792708281,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.01,0,19.274708135879735,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.01,1,19.08624612057519,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.01,2,20.678279938228467,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.01,3,20.18969656504368,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.01,4,18.844409255961178,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.01,mean,19.61466800313765,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.1,0,19.274752368133694,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.1,1,19.086101443354647,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.1,2,20.678287872960315,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.1,3,20.18967577354547,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.1,4,18.844340595184114,False
+within_input_season_standardized,wRC+ + age + PA Ridge,0.1,mean,19.614631610635648,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1.0,0,19.275194334919437,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1.0,1,19.08465626148908,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1.0,2,20.678366754797445,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1.0,3,20.189468666486498,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1.0,4,18.84365430843092,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1.0,mean,19.614268065224678,False
+within_input_season_standardized,wRC+ + age + PA Ridge,10.0,0,19.28175723326815,False
+within_input_season_standardized,wRC+ + age + PA Ridge,10.0,1,19.070753674145056,False
+within_input_season_standardized,wRC+ + age + PA Ridge,10.0,2,20.679110079929103,False
+within_input_season_standardized,wRC+ + age + PA Ridge,10.0,3,20.187476282901997,False
+within_input_season_standardized,wRC+ + age + PA Ridge,10.0,4,18.836823783152617,False
+within_input_season_standardized,wRC+ + age + PA Ridge,10.0,mean,19.611184210679387,False
+within_input_season_standardized,wRC+ + age + PA Ridge,100.0,0,19.355828016129497,False
+within_input_season_standardized,wRC+ + age + PA Ridge,100.0,1,18.982251806623697,False
+within_input_season_standardized,wRC+ + age + PA Ridge,100.0,2,20.700398107803874,False
+within_input_season_standardized,wRC+ + age + PA Ridge,100.0,3,20.182605072745947,False
+within_input_season_standardized,wRC+ + age + PA Ridge,100.0,4,18.77656554922936,False
+within_input_season_standardized,wRC+ + age + PA Ridge,100.0,mean,19.599529710506474,True
+within_input_season_standardized,wRC+ + age + PA Ridge,1000.0,0,20.20322279527214,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1000.0,1,19.172380123878558,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1000.0,2,21.300587803614885,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1000.0,3,20.75092940896753,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1000.0,4,19.23901612076029,False
+within_input_season_standardized,wRC+ + age + PA Ridge,1000.0,mean,20.13322725049868,False
+within_input_season_standardized,B2V Ridge,0.01,0,17.544294650562932,False
+within_input_season_standardized,B2V Ridge,0.01,1,18.751093677560227,False
+within_input_season_standardized,B2V Ridge,0.01,2,19.913628869667104,False
+within_input_season_standardized,B2V Ridge,0.01,3,19.646315368372377,False
+within_input_season_standardized,B2V Ridge,0.01,4,18.613739287833056,False
+within_input_season_standardized,B2V Ridge,0.01,mean,18.89381437079914,True
+within_input_season_standardized,B2V Ridge,0.1,0,17.544441664884612,False
+within_input_season_standardized,B2V Ridge,0.1,1,18.750990598261918,False
+within_input_season_standardized,B2V Ridge,0.1,2,19.913739627535666,False
+within_input_season_standardized,B2V Ridge,0.1,3,19.646347291090382,False
+within_input_season_standardized,B2V Ridge,0.1,4,18.613672461375675,False
+within_input_season_standardized,B2V Ridge,0.1,mean,18.89383832862965,False
+within_input_season_standardized,B2V Ridge,1.0,0,17.545909977814617,False
+within_input_season_standardized,B2V Ridge,1.0,1,18.749961014920945,False
+within_input_season_standardized,B2V Ridge,1.0,2,19.915073214819046,False
+within_input_season_standardized,B2V Ridge,1.0,3,19.646665659320618,False
+within_input_season_standardized,B2V Ridge,1.0,4,18.6130051990616,False
+within_input_season_standardized,B2V Ridge,1.0,mean,18.894123013187365,False
+within_input_season_standardized,B2V Ridge,10.0,0,17.560412432911445,False
+within_input_season_standardized,B2V Ridge,10.0,1,18.739784625189817,False
+within_input_season_standardized,B2V Ridge,10.0,2,19.92993361529742,False
+within_input_season_standardized,B2V Ridge,10.0,3,19.651934928313267,False
+within_input_season_standardized,B2V Ridge,10.0,4,18.606438025257834,False
+within_input_season_standardized,B2V Ridge,10.0,mean,18.897700725393953,False
+within_input_season_standardized,B2V Ridge,100.0,0,17.737554415111447,False
+within_input_season_standardized,B2V Ridge,100.0,1,18.675647771189908,False
+within_input_season_standardized,B2V Ridge,100.0,2,20.072399925597704,False
+within_input_season_standardized,B2V Ridge,100.0,3,19.71612730239377,False
+within_input_season_standardized,B2V Ridge,100.0,4,18.592748990214254,False
+within_input_season_standardized,B2V Ridge,100.0,mean,18.958895680901417,False
+within_input_season_standardized,B2V Ridge,1000.0,0,19.333743503449423,False
+within_input_season_standardized,B2V Ridge,1000.0,1,19.13932092291899,False
+within_input_season_standardized,B2V Ridge,1000.0,2,21.080295389301213,False
+within_input_season_standardized,B2V Ridge,1000.0,3,20.416398973867114,False
+within_input_season_standardized,B2V Ridge,1000.0,4,19.22471398909659,False
+within_input_season_standardized,B2V Ridge,1000.0,mean,19.838894555726664,False
+within_input_season_standardized,B2V + age + PA Ridge,0.01,0,17.362265330236706,False
+within_input_season_standardized,B2V + age + PA Ridge,0.01,1,18.444428649395903,False
+within_input_season_standardized,B2V + age + PA Ridge,0.01,2,19.696849502584033,False
+within_input_season_standardized,B2V + age + PA Ridge,0.01,3,19.18210444862753,False
+within_input_season_standardized,B2V + age + PA Ridge,0.01,4,18.210096965595866,False
+within_input_season_standardized,B2V + age + PA Ridge,0.01,mean,18.579148979288007,False
+within_input_season_standardized,B2V + age + PA Ridge,0.1,0,17.36239644744713,False
+within_input_season_standardized,B2V + age + PA Ridge,0.1,1,18.444296426950025,False
+within_input_season_standardized,B2V + age + PA Ridge,0.1,2,19.696887363425773,False
+within_input_season_standardized,B2V + age + PA Ridge,0.1,3,19.182068682705413,False
+within_input_season_standardized,B2V + age + PA Ridge,0.1,4,18.21004718119004,False
+within_input_season_standardized,B2V + age + PA Ridge,0.1,mean,18.579139220343674,False
+within_input_season_standardized,B2V + age + PA Ridge,1.0,0,17.36370519506557,False
+within_input_season_standardized,B2V + age + PA Ridge,1.0,1,18.44297802053117,False
+within_input_season_standardized,B2V + age + PA Ridge,1.0,2,19.697265423957646,False
+within_input_season_standardized,B2V + age + PA Ridge,1.0,3,19.181712967337177,False
+within_input_season_standardized,B2V + age + PA Ridge,1.0,4,18.20954980908497,False
+within_input_season_standardized,B2V + age + PA Ridge,1.0,mean,18.579042283195303,False
+within_input_season_standardized,B2V + age + PA Ridge,10.0,0,17.376556154410554,False
+within_input_season_standardized,B2V + age + PA Ridge,10.0,1,18.430164010208205,False
+within_input_season_standardized,B2V + age + PA Ridge,10.0,2,19.700992405958374,False
+within_input_season_standardized,B2V + age + PA Ridge,10.0,3,19.178343912986737,False
+within_input_season_standardized,B2V + age + PA Ridge,10.0,4,18.204622534566198,False
+within_input_season_standardized,B2V + age + PA Ridge,10.0,mean,18.578135803626015,True
+within_input_season_standardized,B2V + age + PA Ridge,100.0,0,17.504755240561323,False
+within_input_season_standardized,B2V + age + PA Ridge,100.0,1,18.356837926028692,False
+within_input_season_standardized,B2V + age + PA Ridge,100.0,2,19.778998054005484,False
+within_input_season_standardized,B2V + age + PA Ridge,100.0,3,19.221801318100646,False
+within_input_season_standardized,B2V + age + PA Ridge,100.0,4,18.197163070937307,False
+within_input_season_standardized,B2V + age + PA Ridge,100.0,mean,18.61191112192669,False
+within_input_season_standardized,B2V + age + PA Ridge,1000.0,0,18.88463930252995,False
+within_input_season_standardized,B2V + age + PA Ridge,1000.0,1,18.700945417389853,False
+within_input_season_standardized,B2V + age + PA Ridge,1000.0,2,20.705255039044154,False
+within_input_season_standardized,B2V + age + PA Ridge,1000.0,3,20.022295373064132,False
+within_input_season_standardized,B2V + age + PA Ridge,1000.0,4,18.755083880592764,False
+within_input_season_standardized,B2V + age + PA Ridge,1000.0,mean,19.41364380252417,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.01,0,17.2423764494425,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.01,1,18.431725117139045,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.01,2,19.68555999170433,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.01,3,19.121029603722437,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.01,4,18.39650499959965,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.01,mean,18.575439232321592,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.1,0,17.24278632994363,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.1,1,18.431428742271937,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.1,2,19.68558911056355,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.1,3,19.12120998009534,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.1,4,18.395945984652442,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,0.1,mean,18.57539202950538,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1.0,0,17.24685118091446,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1.0,1,18.428491377045038,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1.0,2,19.68588116044028,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1.0,3,19.12299785119784,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1.0,4,18.390416055313494,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1.0,mean,18.574927524982222,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,10.0,0,17.288153461042025,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,10.0,1,18.409510868986498,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,10.0,2,19.689901709855945,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,10.0,3,19.139425854260097,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,10.0,4,18.34165121720366,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,10.0,mean,18.57372862226965,True
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,100.0,0,17.559727736096107,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,100.0,1,18.37665724660552,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,100.0,2,19.7924408977351,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,100.0,3,19.278829956810036,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,100.0,4,18.181720073866035,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,100.0,mean,18.63787518222256,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1000.0,0,18.74927922906266,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1000.0,1,18.585191340140426,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1000.0,2,20.575039597399396,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1000.0,3,19.98143811338369,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1000.0,4,18.475681930950753,False
+within_input_season_standardized,wRC+ + B2V + age + PA Ridge,1000.0,mean,19.273326042187385,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.01,0,19.73843052919572,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.01,1,19.29841251578339,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.01,2,21.12291463454604,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.01,3,21.057592912770517,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.01,4,18.80266147980143,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.01,mean,20.004002414419418,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.1,0,19.738479936166637,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.1,1,19.298299522363376,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.1,2,21.122940445197127,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.1,3,21.057524949441998,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.1,4,18.802675710844944,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,0.1,mean,20.00398411280282,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1.0,0,19.738973427024906,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1.0,1,19.29717091042667,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1.0,2,21.123198249668466,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1.0,3,21.056846111472286,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1.0,4,18.802817854746635,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1.0,mean,20.00380131066779,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,10.0,0,19.74385112765094,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,10.0,1,19.28601547244175,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,10.0,2,21.127423354172997,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,10.0,3,21.052178742018036,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,10.0,4,18.804222834995983,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,10.0,mean,20.002738306255942,True
+archived_pooled_20_80,Calibrated wRC+ Ridge,100.0,0,19.809626156231666,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,100.0,1,19.20419938405253,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,100.0,2,21.17716346297522,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,100.0,3,21.020092251564513,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,100.0,4,18.829468560943997,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,100.0,mean,20.008109963153586,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1000.0,0,20.7171536818498,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1000.0,1,19.563237449155388,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1000.0,2,21.815043228132613,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1000.0,3,21.374109715792468,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1000.0,4,19.699495560483786,False
+archived_pooled_20_80,Calibrated wRC+ Ridge,1000.0,mean,20.63380792708281,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.01,0,19.274708135879735,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.01,1,19.08624612057519,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.01,2,20.678279938228467,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.01,3,20.18969656504368,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.01,4,18.844409255961178,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.01,mean,19.61466800313765,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.1,0,19.274752368133694,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.1,1,19.086101443354647,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.1,2,20.678287872960315,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.1,3,20.18967577354547,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.1,4,18.844340595184114,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,0.1,mean,19.614631610635648,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1.0,0,19.275194334919437,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1.0,1,19.08465626148908,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1.0,2,20.678366754797445,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1.0,3,20.189468666486498,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1.0,4,18.84365430843092,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1.0,mean,19.614268065224678,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,10.0,0,19.28175723326815,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,10.0,1,19.070753674145056,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,10.0,2,20.679110079929103,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,10.0,3,20.187476282901997,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,10.0,4,18.836823783152617,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,10.0,mean,19.611184210679387,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,100.0,0,19.355828016129497,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,100.0,1,18.982251806623697,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,100.0,2,20.700398107803874,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,100.0,3,20.182605072745947,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,100.0,4,18.77656554922936,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,100.0,mean,19.599529710506474,True
+archived_pooled_20_80,wRC+ + age + PA Ridge,1000.0,0,20.20322279527214,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1000.0,1,19.172380123878558,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1000.0,2,21.300587803614885,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1000.0,3,20.75092940896753,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1000.0,4,19.23901612076029,False
+archived_pooled_20_80,wRC+ + age + PA Ridge,1000.0,mean,20.13322725049868,False
+archived_pooled_20_80,B2V Ridge,0.01,0,17.53610221347387,False
+archived_pooled_20_80,B2V Ridge,0.01,1,18.75064144797007,False
+archived_pooled_20_80,B2V Ridge,0.01,2,19.91154535184336,False
+archived_pooled_20_80,B2V Ridge,0.01,3,19.656776586046142,False
+archived_pooled_20_80,B2V Ridge,0.01,4,18.62244715342624,False
+archived_pooled_20_80,B2V Ridge,0.01,mean,18.895502550551935,True
+archived_pooled_20_80,B2V Ridge,0.1,0,17.53624999564261,False
+archived_pooled_20_80,B2V Ridge,0.1,1,18.75053819338728,False
+archived_pooled_20_80,B2V Ridge,0.1,2,19.911656399808702,False
+archived_pooled_20_80,B2V Ridge,0.1,3,19.656807139163107,False
+archived_pooled_20_80,B2V Ridge,0.1,4,18.622379274687706,False
+archived_pooled_20_80,B2V Ridge,0.1,mean,18.89552620053788,False
+archived_pooled_20_80,B2V Ridge,1.0,0,17.53772597859153,False
+archived_pooled_20_80,B2V Ridge,1.0,1,18.74950686053727,False
+archived_pooled_20_80,B2V Ridge,1.0,2,19.91276515672623,False
+archived_pooled_20_80,B2V Ridge,1.0,3,19.657111832351514,False
+archived_pooled_20_80,B2V Ridge,1.0,4,18.621701503212428,False
+archived_pooled_20_80,B2V Ridge,1.0,mean,18.895762266283793,False
+archived_pooled_20_80,B2V Ridge,10.0,0,17.553311051146068,False
+archived_pooled_20_80,B2V Ridge,10.0,1,18.73931330549466,False
+archived_pooled_20_80,B2V Ridge,10.0,2,19.92745896798415,False
+archived_pooled_20_80,B2V Ridge,10.0,3,19.66050249423765,False
+archived_pooled_20_80,B2V Ridge,10.0,4,18.615023844526835,False
+archived_pooled_20_80,B2V Ridge,10.0,mean,18.899121932677872,False
+archived_pooled_20_80,B2V Ridge,100.0,0,17.729020704996717,False
+archived_pooled_20_80,B2V Ridge,100.0,1,18.670929215048794,False
+archived_pooled_20_80,B2V Ridge,100.0,2,20.0754256290844,False
+archived_pooled_20_80,B2V Ridge,100.0,3,19.72422239413346,False
+archived_pooled_20_80,B2V Ridge,100.0,4,18.604543212780094,False
+archived_pooled_20_80,B2V Ridge,100.0,mean,18.960828231208694,False
+archived_pooled_20_80,B2V Ridge,1000.0,0,19.334379860141848,False
+archived_pooled_20_80,B2V Ridge,1000.0,1,19.13853071070049,False
+archived_pooled_20_80,B2V Ridge,1000.0,2,21.079209658768075,False
+archived_pooled_20_80,B2V Ridge,1000.0,3,20.417996036245977,False
+archived_pooled_20_80,B2V Ridge,1000.0,4,19.22920832137602,False
+archived_pooled_20_80,B2V Ridge,1000.0,mean,19.839864917446484,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.01,0,17.356094543899797,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.01,1,18.440852318163664,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.01,2,19.697805805742078,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.01,3,19.195686193394373,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.01,4,18.214846187983255,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.01,mean,18.581057009836634,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.1,0,17.35622430120366,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.1,1,18.440720257039224,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.1,2,19.697843405546884,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.1,3,19.195623639935082,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.1,4,18.21479363664452,False
+archived_pooled_20_80,B2V + age + PA Ridge,0.1,mean,18.581041048073875,False
+archived_pooled_20_80,B2V + age + PA Ridge,1.0,0,17.357519525858343,False
+archived_pooled_20_80,B2V + age + PA Ridge,1.0,1,18.439403462494287,False
+archived_pooled_20_80,B2V + age + PA Ridge,1.0,2,19.698218864111993,False
+archived_pooled_20_80,B2V + age + PA Ridge,1.0,3,19.195000638607482,False
+archived_pooled_20_80,B2V + age + PA Ridge,1.0,4,18.214268734033983,False
+archived_pooled_20_80,B2V + age + PA Ridge,1.0,mean,18.58088224502122,False
+archived_pooled_20_80,B2V + age + PA Ridge,10.0,0,17.370257121135495,False
+archived_pooled_20_80,B2V + age + PA Ridge,10.0,1,18.426605440009233,False
+archived_pooled_20_80,B2V + age + PA Ridge,10.0,2,19.70192064187017,False
+archived_pooled_20_80,B2V + age + PA Ridge,10.0,3,19.19117772390786,False
+archived_pooled_20_80,B2V + age + PA Ridge,10.0,4,18.209079527494627,False
+archived_pooled_20_80,B2V + age + PA Ridge,10.0,mean,18.579808090883475,True
+archived_pooled_20_80,B2V + age + PA Ridge,100.0,0,17.500620459728307,False
+archived_pooled_20_80,B2V + age + PA Ridge,100.0,1,18.35053075014987,False
+archived_pooled_20_80,B2V + age + PA Ridge,100.0,2,19.78401276982739,False
+archived_pooled_20_80,B2V + age + PA Ridge,100.0,3,19.2330651327222,False
+archived_pooled_20_80,B2V + age + PA Ridge,100.0,4,18.20191026402629,False
+archived_pooled_20_80,B2V + age + PA Ridge,100.0,mean,18.61402787529081,False
+archived_pooled_20_80,B2V + age + PA Ridge,1000.0,0,18.884594065430672,False
+archived_pooled_20_80,B2V + age + PA Ridge,1000.0,1,18.698779387466978,False
+archived_pooled_20_80,B2V + age + PA Ridge,1000.0,2,20.70547942248051,False
+archived_pooled_20_80,B2V + age + PA Ridge,1000.0,3,20.02401251747456,False
+archived_pooled_20_80,B2V + age + PA Ridge,1000.0,4,18.75711998021665,False
+archived_pooled_20_80,B2V + age + PA Ridge,1000.0,mean,19.41399707461387,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.01,0,17.237559387953013,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.01,1,18.426846885859987,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.01,2,19.691441108312734,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.01,3,19.134210538639618,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.01,4,18.40609649609048,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.01,mean,18.579230883371167,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.1,0,17.237973198521598,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.1,1,18.426553591202968,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.1,2,19.691466808830928,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.1,3,19.134382594872665,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.1,4,18.405532120938275,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,0.1,mean,18.579181662873285,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1.0,0,17.242077337082474,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1.0,1,18.423646726631606,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1.0,2,19.69172496992728,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1.0,3,19.13608802912076,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1.0,4,18.39994101973746,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1.0,mean,18.578695616499914,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,10.0,0,17.283741223862126,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,10.0,1,18.404140125629397,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,10.0,2,19.694922398162852,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,10.0,3,19.152949988648288,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,10.0,4,18.35003968544296,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,10.0,mean,18.577158684349126,True
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,100.0,0,17.557109322337975,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,100.0,1,18.371548359079025,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,100.0,2,19.79552817182292,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,100.0,3,19.288612465710365,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,100.0,4,18.186189960884434,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,100.0,mean,18.63979765596694,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1000.0,0,18.749885965198025,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1000.0,1,18.58441210478086,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1000.0,2,20.57531666417482,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1000.0,3,19.983009380191262,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1000.0,4,18.47735154430748,False
+archived_pooled_20_80,wRC+ + B2V + age + PA Ridge,1000.0,mean,19.27399513173049,False

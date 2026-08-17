@@ -1,0 +1,22 @@
+candidate,baseline,metric,improvement,ci_low,ci_high,direction,positive_means_candidate_better,bootstrap_unit,n_boot
+B2V Ridge,Carry-forward wRC+,mae,4.322478497829145,2.946703950602208,5.838273491062482,baseline minus candidate,True,held-out stable player ID,2000
+B2V Ridge,Carry-forward wRC+,r2,0.38166590278665,0.2592468224384374,0.5253018888784048,candidate minus baseline,True,held-out stable player ID,2000
+B2V Ridge,Carry-forward wRC+,spearman,0.05916298343615983,0.00230662253758117,0.119872850529364,candidate minus baseline,True,held-out stable player ID,2000
+B2V Ridge,Calibrated wRC+ Ridge,mae,1.1928206234660799,0.40262246479843516,2.012344090952605,baseline minus candidate,True,held-out stable player ID,2000
+B2V Ridge,Calibrated wRC+ Ridge,r2,0.07418067536873652,0.021919404831105573,0.12232199064451363,candidate minus baseline,True,held-out stable player ID,2000
+B2V Ridge,Calibrated wRC+ Ridge,spearman,0.05916298343615983,0.00230662253758117,0.119872850529364,candidate minus baseline,True,held-out stable player ID,2000
+wRC+ + age + PA Ridge,Calibrated wRC+ Ridge,mae,0.037545592199357714,-0.4957074013729281,0.5429631144237066,baseline minus candidate,True,held-out stable player ID,2000
+wRC+ + age + PA Ridge,Calibrated wRC+ Ridge,r2,0.014432022291579916,-0.02101465797618323,0.04929629172785519,candidate minus baseline,True,held-out stable player ID,2000
+wRC+ + age + PA Ridge,Calibrated wRC+ Ridge,spearman,0.01448100716630285,-0.034030725987176894,0.06432993246894299,candidate minus baseline,True,held-out stable player ID,2000
+B2V + age + PA Ridge,B2V Ridge,mae,-0.0012498562346650033,-0.3759184810431873,0.36761718525875603,baseline minus candidate,True,held-out stable player ID,2000
+B2V + age + PA Ridge,B2V Ridge,r2,0.008577532984196834,-0.012865348754878348,0.030771046735962433,candidate minus baseline,True,held-out stable player ID,2000
+B2V + age + PA Ridge,B2V Ridge,spearman,0.014362582257237522,-0.011110139725680989,0.03939626543960249,candidate minus baseline,True,held-out stable player ID,2000
+B2V + age + PA Ridge,wRC+ + age + PA Ridge,mae,1.1540251750320571,0.4040594111933138,1.8804095147815652,baseline minus candidate,True,held-out stable player ID,2000
+B2V + age + PA Ridge,wRC+ + age + PA Ridge,r2,0.06832618606135343,0.01960556298789623,0.1141081957496587,candidate minus baseline,True,held-out stable player ID,2000
+B2V + age + PA Ridge,wRC+ + age + PA Ridge,spearman,0.059044558527094504,0.0076517351231697615,0.11185043637048143,candidate minus baseline,True,held-out stable player ID,2000
+wRC+ + B2V + age + PA Ridge,wRC+ + age + PA Ridge,mae,1.1250634252220237,0.3043316806370261,1.9290485561116584,baseline minus candidate,True,held-out stable player ID,2000
+wRC+ + B2V + age + PA Ridge,wRC+ + age + PA Ridge,r2,0.0661408426012603,0.01335310070369373,0.11675786348801194,candidate minus baseline,True,held-out stable player ID,2000
+wRC+ + B2V + age + PA Ridge,wRC+ + age + PA Ridge,spearman,0.05649300663958029,0.0004267715821367771,0.11572663876997974,candidate minus baseline,True,held-out stable player ID,2000
+wRC+ + B2V + age + PA Ridge,B2V + age + PA Ridge,mae,-0.02896174981003341,-0.14465958982382449,0.08642736774941016,baseline minus candidate,True,held-out stable player ID,2000
+wRC+ + B2V + age + PA Ridge,B2V + age + PA Ridge,r2,-0.0021853434600931365,-0.009352736067868553,0.005221775906304366,candidate minus baseline,True,held-out stable player ID,2000
+wRC+ + B2V + age + PA Ridge,B2V + age + PA Ridge,spearman,-0.002551551887514214,-0.011162755032609366,0.006410820113153194,candidate minus baseline,True,held-out stable player ID,2000

@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "bootstrap_replicates": 2000,
+  "ridge_alphas": [0.01, 0.1, 1.0, 10.0, 100.0, 1000.0],
+  "inner_cv": "5-fold GroupKFold by stable player ID",
+  "train_transitions": [[2021, 2022], [2022, 2023], [2023, 2024]],
+  "test_transition": [2024, 2025],
+  "matching_wrc_tolerance": 5.0,
+  "matching_war_tolerance": 0.2,
+  "matching_comparison_reuse": true,
+  "random_pair_basis": "same successfully matched focal player-season rows",
+  "random_pair_restrictions": "same season and PA stratum",
+  "pa_strata": ["100-249", "250-499", "at least 500"],
+  "stability_pa_basis": "min(PA_t, PA_t+1)",
+  "primary_vector_scaling": "within-input-season population z-score (ddof=0) of archived affine 20-80 dimensions"
+}

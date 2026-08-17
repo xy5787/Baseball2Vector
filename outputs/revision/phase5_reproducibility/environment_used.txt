@@ -1,0 +1,22 @@
+# Environment actually used to produce outputs/revision/phase{0,1,2,3,4}/*
+# Python: 3.14.6
+
+## Packages required by requirements.txt, versions actually installed this session:
+pandas: pandas==3.0.3
+numpy: numpy==2.5.1
+scikit-learn: scikit-learn==1.8.0
+matplotlib: matplotlib==3.10.9
+scipy: scipy==1.17.1
+pybaseball: pybaseball==2.2.7
+torch: NOT INSTALLED in this session
+seaborn: NOT INSTALLED in this session
+
+## Deviation from requirements.txt
+requirements.txt pins pandas==3.0.2, numpy==2.4.4 (Python 3.12). This session's sandbox
+had pandas==pandas==3.0.3, numpy==numpy==2.5.1 pre-installed
+under Python 3.14.6, and torch/seaborn were not installed at all (not needed
+for Phases 0-4, which never call joint_vae.py or the seaborn-based parts of viz.py).
+matplotlib and pybaseball were installed fresh this session, pinned to the versions
+requirements.txt already specified (3.10.9 / 2.2.7 respectively) -- those two match exactly.
+Recommendation: re-pin requirements.txt to the versions below before treating Phases 0-4
+as bit-exact reproducible, or note the drift explicitly if reproducing on Python 3.12.

@@ -1,0 +1,2 @@
+n_player_seasons,n_players,pearson_r,ci_low,ci_high,bootstrap_unit,n_boot
+2286,818,0.8054285250912024,0.7779531276258126,0.8282198566868093,stable player ID,2000

@@ -1,0 +1,10 @@
+metric,encoding_a,encoding_b,r_diff,diff_ci_low,diff_ci_high,significant_95
+WAR,ZScore,PCA,0.0123,0.0106,0.0142,True
+WAR,ZScore,JointVAE,0.067,0.0508,0.0832,True
+WAR,PCA,JointVAE,0.0547,0.0392,0.0699,True
+wRC+,ZScore,PCA,0.0144,0.0125,0.0163,True
+wRC+,ZScore,JointVAE,0.1424,0.1245,0.1603,True
+wRC+,PCA,JointVAE,0.1281,0.1109,0.1447,True
+OPS,ZScore,PCA,0.0158,0.0139,0.0178,True
+OPS,ZScore,JointVAE,0.1399,0.122,0.1582,True
+OPS,PCA,JointVAE,0.1242,0.1067,0.1416,True

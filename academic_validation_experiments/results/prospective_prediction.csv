@@ -1,0 +1,31 @@
+status,target,model,features,n_train,n_test,train_period,test_period,metric,estimate,ci_low,ci_high,reason
+ok,wRC+_t1,league_mean,training-target mean,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,22.27433553411207,20.51084729981378,24.00270865075334,
+ok,wRC+_t1,league_mean,training-target mean,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,-0.0006884382103273801,-0.016310045677250896,-2.5883846759611203e-06,
+ok,wRC+_t1,league_mean,training-target mean,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,,,,
+ok,wRC+_t1,carry_forward,season-t target,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,22.349162011173185,20.51368715083799,24.385614525139665,
+ok,wRC+_t1,carry_forward,season-t target,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,-0.10175498071354316,-0.2981578415336809,0.07760577371978819,
+ok,wRC+_t1,carry_forward,season-t target,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,0.44868817409268874,0.35476102095165507,0.5351586579524453,
+ok,wRC+_t1,b2v_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,18.022996270622905,16.50835887771963,19.679835078284178,
+ok,wRC+_t1,b2v_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,0.2804116595639181,0.17948842278755145,0.3752642496525541,
+ok,wRC+_t1,b2v_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,0.5076824490749843,0.42263416447098934,0.5875712966681289,
+ok,wRC+_t1,b2v_age_pa_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t,Age_t,PA_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,18.01839109374325,16.51847152515676,19.61560487648998,
+ok,wRC+_t1,b2v_age_pa_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t,Age_t,PA_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,0.2889419116594175,0.19185662999477812,0.38156675087168496,
+ok,wRC+_t1,b2v_age_pa_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t,Age_t,PA_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,0.5216078279513934,0.43760215404316327,0.6001881792495676,
+not_run_missing_raw,wRC+_t1,raw_stat_age_pa_ridge,season-t constituent statistics + age + PA,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,,,,The committed processed file omits all constituent raw statistics.
+not_run_missing_raw,wRC+_t1,raw_stat_age_pa_ridge,season-t constituent statistics + age + PA,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,,,,The committed processed file omits all constituent raw statistics.
+not_run_missing_raw,wRC+_t1,raw_stat_age_pa_ridge,season-t constituent statistics + age + PA,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,,,,The committed processed file omits all constituent raw statistics.
+ok,WAR600_t1,league_mean,training-target mean,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,1.7763275244194536,1.634966822020853,1.9235816960408216,
+ok,WAR600_t1,league_mean,training-target mean,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,-2.1680994252371022e-05,-0.014275524222016616,-2.9211801728545903e-06,
+ok,WAR600_t1,league_mean,training-target mean,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,,,,
+ok,WAR600_t1,carry_forward,season-t target,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,1.915653058184551,1.7607408692703288,2.0777011626845057,
+ok,WAR600_t1,carry_forward,season-t target,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,-0.14043410081368624,-0.33393874001569707,0.03589365665282637,
+ok,WAR600_t1,carry_forward,season-t target,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,0.403862610941987,0.3120100429914504,0.4922438610123008,
+ok,WAR600_t1,b2v_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,1.5581804130888466,1.4281307487173331,1.6945283675378913,
+ok,WAR600_t1,b2v_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,0.2104492195681057,0.1293058252951563,0.2837844022042777,
+ok,WAR600_t1,b2v_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,0.4166422452650852,0.32563940453728274,0.5058465816078738,
+ok,WAR600_t1,b2v_age_pa_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t,Age_t,PA_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,1.552763536441283,1.419843636756264,1.685934981746972,
+ok,WAR600_t1,b2v_age_pa_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t,Age_t,PA_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,0.22342013779963255,0.13379522034223307,0.3053248840144191,
+ok,WAR600_t1,b2v_age_pa_ridge,"ZScore_Contact_t,ZScore_Power_t,ZScore_Speed_t,ZScore_Defense_t,ZScore_Discipline_t,Age_t,PA_t",1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,0.439151413273248,0.34958535227656007,0.5292529117990281,
+not_run_missing_raw,WAR600_t1,raw_stat_age_pa_ridge,season-t constituent statistics + age + PA,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,mae,,,,The committed processed file omits all constituent raw statistics.
+not_run_missing_raw,WAR600_t1,raw_stat_age_pa_ridge,season-t constituent statistics + age + PA,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,r2,,,,The committed processed file omits all constituent raw statistics.
+not_run_missing_raw,WAR600_t1,raw_stat_age_pa_ridge,season-t constituent statistics + age + PA,1056,358,2021->2022;2022->2023;2023->2024,2024->2025,spearman,,,,The committed processed file omits all constituent raw statistics.

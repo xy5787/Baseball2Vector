@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "baseball2vector/prediction_v1",
+  "title": "Baseball2Vector Prediction v1",
+  "type": "object",
+  "properties": {
+    "record_id": {"type": "string", "minLength": 1},
+    "delta_war": {"type": "number"},
+    "delta_wrc": {"type": "number"},
+    "delta_ops": {"type": "number"},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "comparables": {"type": ["array", "null"], "items": {"type": "string"}, "maxItems": 10},
+    "rationale": {"type": ["string", "null"]}
+  },
+  "required": ["record_id", "delta_war", "delta_wrc", "delta_ops"],
+  "additionalProperties": true
+}
