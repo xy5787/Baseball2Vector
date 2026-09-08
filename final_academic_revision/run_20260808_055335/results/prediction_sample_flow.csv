@@ -1,6 +1,0 @@
-stage,n_rows,n_players,exclusion
-source player-seasons,2309,818,none
-stable-ID matched player-seasons,2286,818,15 ambiguous and 8 unmatched rows
-all adjacent transitions,1414,567,non-adjacent or single-season records
-training transitions,1056,506,held-out 2024->2025
-held-out test transitions,358,358,none after common-set construction

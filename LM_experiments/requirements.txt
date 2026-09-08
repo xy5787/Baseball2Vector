@@ -1,5 +1,0 @@
-# Dependencies beyond the main repo requirements.
-pyyaml  # config.yaml loading (Phase 1+)
-
-# Phase 5 is provider-neutral and stub-only. Install a provider SDK only when
-# implementing a later-phase adapter; see API_INTEGRATION.md.
