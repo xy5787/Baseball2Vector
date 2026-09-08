@@ -1,3 +1,0 @@
-left,right,median_difference,ci_low,ci_high,n_boot
-scalar_matched,same_player_adjacent,0.28786549749944057,0.26231607180893074,0.3171394294068234,2000
-random_same_season_pa_stratum,scalar_matched,0.18699828149727904,0.1539638676593115,0.21317724241114008,2000

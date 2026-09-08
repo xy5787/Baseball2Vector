@@ -1,9 +1,0 @@
-{
-  "run_id": "AGENT_PILOT_NONPUBLICATION",
-  "n_records": 5,
-  "n_agent_predictions": 15,
-  "fresh_agent_per_record_arm": true,
-  "publication_grade": false,
-  "arm_d_identity_leak_count": 3,
-  "arm_d_identity_leak_denominator": 5
-}
