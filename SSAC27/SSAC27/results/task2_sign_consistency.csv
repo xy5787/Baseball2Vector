@@ -1,0 +1,16 @@
+target,candidate,baseline,delta_mae_fold_A,delta_mae_fold_B,delta_mae_fold_C,ci_excludes_zero_fold_A,ci_excludes_zero_fold_B,ci_excludes_zero_fold_C,n_folds,n_folds_candidate_better,all_folds_same_sign,all_three_same_sign,n_folds_ci_excludes_zero
+wrc_plus,M1 B2V 5 tools,M0 scalar baseline,0.7253572836043318,1.5748897821189551,1.2059424429104872,True,True,True,3,3,True,True,3
+wrc_plus,M1 B2V 5 tools,M2 constituent stats,0.14497808201016582,-0.29479196621179327,-0.2808824506011973,False,True,False,3,1,False,False,1
+wrc_plus,M2 constituent stats,M0 scalar baseline,0.580379201594166,1.8696817483307484,1.4868248935116846,False,True,True,3,3,True,True,2
+wrc_plus,M4 B2V + age + PA,M3 scalar + age + PA,0.6181874293860083,1.5505963952023905,1.1337367389100557,False,True,True,3,3,True,True,2
+wrc_plus,M4 B2V + age + PA,M5 constituents + age + PA,0.25874880530459876,-0.44432581768641555,-0.2858973327838825,False,True,False,3,1,False,False,1
+war,M1 B2V 5 tools,M0 scalar baseline,-0.06531993611311693,-0.030890655324714578,-0.0465183738687267,True,False,False,3,0,True,True,1
+war,M1 B2V 5 tools,M2 constituent stats,-0.019733531080788236,-0.06834816589973847,-0.046258725336398854,True,True,False,3,0,True,True,2
+war,M2 constituent stats,M0 scalar baseline,-0.04558640503232869,0.03745751057502389,-0.0002596485323278497,False,False,False,3,1,False,False,0
+war,M4 B2V + age + PA,M3 scalar + age + PA,-0.03328644175327966,-0.009623690245736727,-0.016054864301212612,False,False,False,3,0,True,True,0
+war,M4 B2V + age + PA,M5 constituents + age + PA,0.009804190677957125,-0.04280165672825231,-0.04385217235672334,False,True,True,3,1,False,False,2
+war_rate,M1 B2V 5 tools,M0 scalar baseline,0.03915740244881705,0.06349802960091955,0.03453705528545448,False,True,False,3,3,True,True,1
+war_rate,M1 B2V 5 tools,M2 constituent stats,-0.0029168121264881997,-0.07072293567931953,-0.016830736322251516,False,True,False,3,0,True,True,1
+war_rate,M2 constituent stats,M0 scalar baseline,0.04207421457530525,0.13422096528023908,0.05136779160770599,False,True,False,3,3,True,True,1
+war_rate,M4 B2V + age + PA,M3 scalar + age + PA,0.005525725904294454,0.06249674059729915,0.021394438150858175,False,True,False,3,3,True,True,1
+war_rate,M4 B2V + age + PA,M5 constituents + age + PA,0.02616632154662457,-0.04604760343198988,-0.01721369533174255,False,True,False,3,1,False,False,1

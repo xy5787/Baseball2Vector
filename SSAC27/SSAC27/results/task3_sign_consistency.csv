@@ -1,0 +1,22 @@
+target,candidate,baseline,delta_mae_fold_A,delta_mae_fold_B,delta_mae_fold_C,ci_excludes_zero_fold_A,ci_excludes_zero_fold_B,ci_excludes_zero_fold_C,n_folds,n_folds_candidate_better,all_folds_same_sign,all_three_same_sign,n_folds_ci_excludes_zero
+wrc_plus,M7 Marcel + B2V,M6 Marcel (no fit),1.0259339394508586,1.2532886922621422,1.3462436490977652,True,True,True,3,3,True,True,3
+wrc_plus,M7 Marcel + B2V,M6c Marcel calibrated,0.31368712733180004,0.5946139751393815,0.8227927485962176,False,True,True,3,3,True,True,2
+wrc_plus,M7x Marcel + B2V + age + PA,M6c Marcel calibrated,0.7068323205945468,0.37726500934083873,0.7853024979184369,True,False,True,3,3,True,True,2
+wrc_plus,M6c Marcel calibrated,M0 scalar baseline,0.42914739643800104,1.1968294671829547,0.29928574620554116,False,True,False,3,3,True,True,1
+wrc_plus,M6c Marcel calibrated,M1 B2V 5 tools,-0.2962098871663308,-0.37806031493600045,-0.9066566967049461,False,False,True,3,0,True,True,1
+wrc_plus,M6 Marcel (no fit),M1 B2V 5 tools,-1.0084566992853894,-1.0367350320587612,-1.4301075972064936,True,False,True,3,0,True,True,2
+wrc_plus,M7 Marcel + B2V,M1 B2V 5 tools,0.017477240165469254,0.21655366020338107,-0.08386394810872844,False,False,False,3,2,False,False,0
+war,M7 Marcel + B2V,M6 Marcel (no fit),0.029290897031948093,0.05135595613445032,0.05595631951355595,True,True,True,3,3,True,True,3
+war,M7 Marcel + B2V,M6c Marcel calibrated,0.007991103039932446,0.014337427934333347,0.02741299059517721,False,False,True,3,3,True,True,1
+war,M7x Marcel + B2V + age + PA,M6c Marcel calibrated,0.08463139579223,0.009606534350152351,0.030323866813475098,True,False,False,3,3,True,True,1
+war,M6c Marcel calibrated,M0 scalar baseline,-0.048640539530886207,0.016552843655978755,-0.004942079566097046,True,False,False,3,1,False,False,1
+war,M6c Marcel calibrated,M1 B2V 5 tools,0.01667939658223072,0.04744349898069333,0.04157629430262966,False,False,False,3,3,True,True,0
+war,M6 Marcel (no fit),M1 B2V 5 tools,-0.0046203974097849265,0.01042497078057636,0.013032965384250916,False,False,False,3,2,False,False,0
+war,M7 Marcel + B2V,M1 B2V 5 tools,0.024670499622163167,0.06178092691502668,0.06898928489780687,False,True,True,3,3,True,True,2
+war_rate,M7 Marcel + B2V,M6 Marcel (no fit),0.09040467363298221,0.08359341815940802,0.09637499267207317,True,True,True,3,3,True,True,3
+war_rate,M7 Marcel + B2V,M6c Marcel calibrated,0.00013195939885313202,0.026197483506743335,0.034444203893388314,False,False,False,3,3,True,True,0
+war_rate,M7x Marcel + B2V + age + PA,M6c Marcel calibrated,0.08575905512233728,0.008042439023740355,0.046090127062392794,True,False,False,3,3,True,True,1
+war_rate,M6c Marcel calibrated,M0 scalar baseline,0.03315689498928687,0.07627414153737133,0.02128747295784117,False,True,False,3,3,True,True,1
+war_rate,M6c Marcel calibrated,M1 B2V 5 tools,-0.00600050745953018,0.012776111936451784,-0.013249582327613307,False,False,False,3,1,False,False,0
+war_rate,M6 Marcel (no fit),M1 B2V 5 tools,-0.09627322169365926,-0.0446198227162129,-0.07518037110629816,True,False,False,3,0,True,True,1
+war_rate,M7 Marcel + B2V,M1 B2V 5 tools,-0.005868548060677048,0.03897359544319512,0.021194621565775007,False,False,False,3,2,False,False,0
