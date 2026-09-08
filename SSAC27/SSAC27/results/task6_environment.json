@@ -1,0 +1,22 @@
+{
+  "python": "3.14.6",
+  "numpy": "2.5.1",
+  "pandas": "3.0.3",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.8.0",
+  "seed": 42,
+  "n_boot": 2000,
+  "alpha_grid": "np.logspace(-3, 4, 50)",
+  "inner_cv": "GroupKFold(n_splits=5) on player_id",
+  "raw_export_sha256": "6eaa7829c137409a4bf3063ab207668ee3147157d26a84c676440f1364f86fae",
+  "archived_ids_sha256": "0c810b9ea6aab754cd389ae7c5ab401a139bb251c6490a84b6e4b71d6cd07963",
+  "export_2019_2020_sha256": "e17ca3dad3d7270ac4e5a9e0d40660a13288ef2f110f2fae4ffbac68b40f09e9",
+  "export_2021_2025_sha256": "300589ed55dfc7d8ecbcea62647c85621c384c8d4d0161e47a49014f1885a711",
+  "cohort_rows": 3070,
+  "transitions": 1981,
+  "encodings": [
+    "zscore",
+    "pca"
+  ],
+  "counting_targets_exclude_2020": true
+}

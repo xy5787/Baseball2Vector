@@ -1,0 +1,7 @@
+window,candidate,baseline,delta_mae_fold_2020->21,delta_mae_fold_2021->22,delta_mae_fold_2022->23,delta_mae_fold_2023->24,delta_mae_fold_2024->25,ci_excludes_zero_fold_2020->21,ci_excludes_zero_fold_2021->22,ci_excludes_zero_fold_2022->23,ci_excludes_zero_fold_2023->24,ci_excludes_zero_fold_2024->25,n_folds,n_folds_candidate_better,all_folds_same_sign,all_three_same_sign,n_folds_ci_excludes_zero
+2019-2025 (all),M1 B2V 5 tools,M0 scalar baseline,0.8215032151824673,0.8120984919825425,0.6825415016629499,1.4458800376055976,1.1020622994881073,True,True,False,True,True,5,5,True,True,4
+2019-2025 (all),M1 B2V 5 tools,M2 constituent stats,0.6160802659071578,-0.04564128644322807,-0.3438910257090875,-0.543757318929373,-0.40455619526343156,True,False,False,True,True,5,1,False,False,3
+2019-2025 (all),M2 constituent stats,M0 scalar baseline,0.20542294927530946,0.8577397784257705,1.0264325273720374,1.9896373565349705,1.5066184947515389,False,True,True,True,True,5,5,True,True,4
+2019-2025 (all),M4 B2V + age + PA,M3 scalar + age + PA,0.7227536660792211,0.7102947443410805,0.5054931035118244,1.3364281341230217,1.146601299106468,True,True,False,True,True,5,5,True,True,4
+2019-2025 (all),M7 Marcel + B2V,M6c Marcel calibrated,0.27528824940917573,0.13295404369606345,0.29200008094432306,0.4726943089753526,0.8100278226947921,False,False,False,True,True,5,5,True,True,2
+2019-2025 (all),M6c Marcel calibrated,M1 B2V 5 tools,-0.15602264520870435,0.3274558871985924,-0.1312186701767395,-0.24750266144942756,-0.8028735294840175,False,False,False,False,False,5,1,False,False,0

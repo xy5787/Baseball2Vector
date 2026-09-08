@@ -1,0 +1,26 @@
+{
+  "python": "3.14.6",
+  "numpy": "2.5.1",
+  "pandas": "3.0.3",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.8.0",
+  "seed": 42,
+  "n_boot": 2000,
+  "alpha_grid": "np.logspace(-3, 4, 50)",
+  "inner_cv": "GroupKFold(n_splits=5) on player_id",
+  "raw_export_sha256": "6eaa7829c137409a4bf3063ab207668ee3147157d26a84c676440f1364f86fae",
+  "archived_ids_sha256": "0c810b9ea6aab754cd389ae7c5ab401a139bb251c6490a84b6e4b71d6cd07963",
+  "k_values": [
+    3,
+    5,
+    10
+  ],
+  "scalar_features": [
+    "WAR_t",
+    "wRC+_t"
+  ],
+  "pools": [
+    "same_season",
+    "past_seasons"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "python": "3.14.6",
+  "numpy": "2.5.1",
+  "pandas": "3.0.3",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.8.0",
+  "seed": 42,
+  "n_boot": 2000,
+  "alpha_grid": "np.logspace(-3, 4, 50)",
+  "inner_cv": "GroupKFold(n_splits=5) on player_id",
+  "raw_export_sha256": "6eaa7829c137409a4bf3063ab207668ee3147157d26a84c676440f1364f86fae",
+  "archived_ids_sha256": "0c810b9ea6aab754cd389ae7c5ab401a139bb251c6490a84b6e4b71d6cd07963",
+  "marcel_season_weights": [
+    5,
+    4,
+    3
+  ],
+  "marcel_regression_pa": 1200,
+  "marcel_age_pivot": 29,
+  "marcel_age_slope_over": 0.003,
+  "marcel_age_slope_under": 0.006,
+  "marcel_metrics": {
+    "wrc_plus": {
+      "column": "wRC+",
+      "source_is_rate": true,
+      "rate_scale": 1.0,
+      "multiply_by_projected_pa": false
+    },
+    "war": {
+      "column": "WAR",
+      "source_is_rate": false,
+      "rate_scale": 1.0,
+      "multiply_by_projected_pa": true
+    },
+    "war_rate": {
+      "column": "WAR",
+      "source_is_rate": false,
+      "rate_scale": 600.0,
+      "multiply_by_projected_pa": false
+    }
+  },
+  "marcel_playing_time": "200 + 0.5*PA_t + 0.1*PA_{t-1} (multiplies the rate only for counting WAR)"
+}
