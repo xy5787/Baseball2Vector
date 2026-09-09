@@ -147,7 +147,12 @@ Some large intermediate tables and local toolchains are also excluded from Git. 
 }
 ```
 
-## Contact
+- `src/baseball2vec/`: representation and final validation implementation
+- `scripts/`: project-local entrypoints
+- `data/processed/`: redistributable analysis inputs
+- `results/`: canonical and supporting final results
+- `paper/`: the one canonical TeX manuscript and only its referenced artifacts
+- `tests/`: reproducibility, consistency, and leakage checks
 
 Jaeseok Choi — `jaeseok.choi@skku.edu`
 

@@ -26,7 +26,7 @@ import json
 import numpy as np
 import pandas as pd
 
-import ssac_common as sc
+import common as sc
 
 GRID = sc.ALPHA_GRID_WIDE
 ENCODING_LABELS = {
@@ -141,6 +141,7 @@ def verdict_table(paired: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
+    (sc.RESULTS_DIR / "task5").mkdir(parents=True, exist_ok=True)
     players = sc.load_player_seasons()
     transitions = sc.build_transitions(players)
 
@@ -149,16 +150,16 @@ def main() -> None:
     paired = pd.concat([b[1] for b in blocks], ignore_index=True)
     verdicts = verdict_table(paired)
 
-    performance.to_csv(sc.RESULTS_DIR / "task5_fold_performance.csv", index=False)
-    paired.to_csv(sc.RESULTS_DIR / "task5_paired_differences.csv", index=False)
-    verdicts.to_csv(sc.RESULTS_DIR / "task5_encoder_verdicts.csv", index=False)
+    performance.to_csv(sc.RESULTS_DIR / "task5" / "fold_performance.csv", index=False)
+    paired.to_csv(sc.RESULTS_DIR / "task5" / "paired_differences.csv", index=False)
+    verdicts.to_csv(sc.RESULTS_DIR / "task5" / "encoder_verdicts.csv", index=False)
     pd.concat([b[2] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task5_predictions.csv", index=False
+        sc.RESULTS_DIR / "task5" / "predictions.csv", index=False
     )
     pd.concat([b[3] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task5_alpha_tuning.csv", index=False
+        sc.RESULTS_DIR / "task5" / "alpha_tuning.csv", index=False
     )
-    (sc.RESULTS_DIR / "task5_environment.json").write_text(
+    (sc.RESULTS_DIR / "task5" / "environment.json").write_text(
         json.dumps(
             {**sc.environment_stamp(), "encodings": list(ENCODING_LABELS.values())},
             indent=2,

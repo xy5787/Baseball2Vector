@@ -1,5 +1,0 @@
-scale_variant,left,right,median_difference,ci_low,ci_high
-old,scalar_matched,same_player_adjacent,0.29052969453961053,0.264271484630433,0.3171210666043565
-old,random_same_season_pa_stratum,scalar_matched,0.18433408445710908,0.15391887695231518,0.2113901989535958
-new,scalar_matched,same_player_adjacent,0.29720100279655637,0.2687567329214569,0.32326870966988375
-new,random_same_season_pa_stratum,scalar_matched,0.18927101057231965,0.15633453587874496,0.21804793770211267

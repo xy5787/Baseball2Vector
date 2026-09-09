@@ -32,9 +32,9 @@ import json
 import numpy as np
 import pandas as pd
 
-import marcel
-import ssac_common as sc
-import ssac_data as sd
+import common as sc
+from baseball2vec import marcel
+import data as sd
 
 GRID = sc.ALPHA_GRID_WIDE
 GRID_NAME = "wide_logspace_-3_4_50"
@@ -321,16 +321,17 @@ def run_target(
 
 
 def main() -> None:
+    (sc.RESULTS_DIR / "task3").mkdir(parents=True, exist_ok=True)
     players = sc.load_player_seasons()
     transitions, _ = build_transitions_with_marcel(players)
 
     variants = marcel_variant_table(transitions, players, sd.load_history_pool())
-    variants.to_csv(sc.RESULTS_DIR / "task3_marcel_variants.csv", index=False)
+    variants.to_csv(sc.RESULTS_DIR / "task3" / "marcel_variants.csv", index=False)
     print("\n  Marcel history pool x league baseline (wRC+):")
     print(variants.to_string(index=False))
 
     coverage = coverage_table(transitions)
-    coverage.to_csv(sc.RESULTS_DIR / "task3_marcel_coverage.csv", index=False)
+    coverage.to_csv(sc.RESULTS_DIR / "task3" / "marcel_coverage.csv", index=False)
     print("\n  Marcel history coverage by origin season:")
     print(coverage.to_string(index=False))
 
@@ -340,17 +341,17 @@ def main() -> None:
     signs = sc.sign_consistency(paired, PAIRS, by="target")
     depth = pd.concat([b[4] for b in blocks if not b[4].empty], ignore_index=True)
 
-    performance.to_csv(sc.RESULTS_DIR / "task3_fold_performance.csv", index=False)
-    paired.to_csv(sc.RESULTS_DIR / "task3_paired_differences.csv", index=False)
-    signs.to_csv(sc.RESULTS_DIR / "task3_sign_consistency.csv", index=False)
-    depth.to_csv(sc.RESULTS_DIR / "task3_history_depth_strata.csv", index=False)
+    performance.to_csv(sc.RESULTS_DIR / "task3" / "fold_performance.csv", index=False)
+    paired.to_csv(sc.RESULTS_DIR / "task3" / "paired_differences.csv", index=False)
+    signs.to_csv(sc.RESULTS_DIR / "task3" / "sign_consistency.csv", index=False)
+    depth.to_csv(sc.RESULTS_DIR / "task3" / "history_depth_strata.csv", index=False)
     pd.concat([b[2] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task3_predictions.csv", index=False
+        sc.RESULTS_DIR / "task3" / "predictions.csv", index=False
     )
     pd.concat([b[3] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task3_alpha_tuning.csv", index=False
+        sc.RESULTS_DIR / "task3" / "alpha_tuning.csv", index=False
     )
-    (sc.RESULTS_DIR / "task3_environment.json").write_text(
+    (sc.RESULTS_DIR / "task3" / "environment.json").write_text(
         json.dumps(
             {
                 **sc.environment_stamp(),

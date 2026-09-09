@@ -1,4 +1,0 @@
-LaTeX Font Warning: Font shape `TU/ptm/m/n' undefined
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-LaTeX Font Warning: Font shape `TU/pcr/m/n' undefined
-LaTeX Font Warning: Font shape `TU/ptm/m/it' undefined

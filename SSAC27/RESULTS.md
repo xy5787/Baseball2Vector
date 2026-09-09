@@ -22,7 +22,7 @@ rejected alternatives: [`decisions_log.md`](decisions_log.md).
 Reproduce everything:
 
 ```bash
-python SSAC27/scripts/run_ssac_experiments.py
+python SSAC27/scripts/run_all.py
 ```
 
 ---
@@ -52,24 +52,17 @@ two data defects this package had to fix.
 | `data/raw/batting_stats_2021_2025.csv` | 2021–2025, PA ≥ 100, 462 columns — the qualified cache |
 | `data/raw/fangraphs-leaderboards (1).csv` | 2021–2026, **no PA minimum**, 465 columns |
 | `data/raw/batting_stats_2019_2020.csv` | 2019–2020, **no PA minimum**, 465 columns |
-| `final_academic_revision/run_20260808_055335/data_intermediate/player_seasons_with_ids.csv` | archived tool scores + stable IDs |
+| `data/processed/transitions.csv` | public Tasks 1–5 transition table, including archived scores, stable IDs, and constituent features |
 
 2026 is dropped everywhere: it is later than every outcome season in the study,
 so it could only ever be a forward reference. SHA-256 hashes of every input are
-recorded in each task's `*_environment.json`.
+recorded in each task's `environment.json` and consolidated under `results/provenance/`.
 
-**Two stale limitations in the repository's own documentation.** `README.md` and
-`final_academic_revision/run_20260808_055335/README.md` both state that the raw
-constituent statistics are unarchived and the raw-statistic Ridge control is
-`not_run_missing_raw`. That is no longer true — the recovered exports contain all
-22 statistics, and Task 1 runs the control. Both files need the limitation
-retracted (`decisions_log.md` D1).
-
-**The raw constituent statistics were previously reported as unavailable.** Both
-`README.md` and `final_academic_revision/run_20260808_055335/README.md` state
-the raw-statistic Ridge control was `not_run_missing_raw`. That is no longer
-true: the export recovered on 2026-08-12 contains all 22 statistics. Those two
-files need the limitation retracted. See `decisions_log.md` D1.
+**Resolved provenance limitation.** Earlier documentation (preserved in Git history)
+reported that constituent statistics were unavailable. The recovered export contained
+all 22 statistics, so Task 1 ran the raw-statistic control. Those forecast-safe
+constituent features are now embedded in `data/processed/transitions.csv`; the source
+export remains local under `data/raw/`. See `results/provenance/decisions_log.md` D1.
 
 ### The 22 constituent statistics
 
@@ -107,8 +100,7 @@ projection of M2's** and the M1-vs-M2 contrast isolates the grouping alone.
 
 wRC+ is batting-only. It prices neither Defense nor Speed, two of the five tools,
 so the published evaluation was a structurally unfavourable test of the tool
-structure. WAR prices both. The repository's own `DeltaAssociationExtension`
-already reports the matching asymmetry: Defense and Speed have CIs excluding zero
+structure. WAR prices both. The SaberSeminar result `../SaberSeminar26/results/delta_association_coefficients.csv` reports the matching asymmetry: Defense and Speed have CIs excluding zero
 for ΔWAR but not for ΔwRC+ or ΔOPS.
 
 Adding WAR was expected to help the five-tool vector. **It does not.** The result
@@ -140,7 +132,7 @@ WAR per 600 M0 1.614 / M1 1.569.
 | M1 vs M2 | −0.145 [−0.379, +0.085] | **−0.045 [−0.070, −0.021]\*** | **−0.030 [−0.060, −0.002]\*** |
 | M4 vs M3 | +1.103 [+0.685, +1.514]\* | −0.020 [−0.043, +0.003] | +0.030 [+0.001, +0.058]\* |
 
-> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2_fold_performance.csv`, `results/task2_paired_differences.csv`
+> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2/fold_performance.csv`, `results/task2/paired_differences.csv`
 
 ### What the WAR targets say
 
@@ -230,7 +222,7 @@ Secondary, the published 6-value alpha grid `[0.01, 0.1, 1, 10, 100, 1000]`
 | M4 B2V + age + PA | 7 | 10 | 18.028 | [16.528, 19.634] | 23.563 |
 | M5 constituents + age + PA | 24 | 100 | 17.762 | [16.325, 19.259] | 22.955 |
 
-> Source: `SSAC27/scripts/task1_constituent_control.py` → `results/task1_model_comparison.csv`
+> Source: `SSAC27/scripts/task1_constituent_control.py` → `results/task1/model_comparison.csv`
 > ```bash
 > python SSAC27/scripts/task1_constituent_control.py
 > ```
@@ -259,7 +251,7 @@ Published 6-value alpha grid:
 | M4 B2V + age + PA | M3 wRC+ + age + PA | +1.154 | [+0.404, +1.880] | yes |
 | M5 constituents + age + PA | M3 wRC+ + age + PA | +1.420 | [+0.566, +2.261] | yes |
 
-> Source: `SSAC27/scripts/task1_constituent_control.py` → `results/task1_paired_differences.csv`
+> Source: `SSAC27/scripts/task1_constituent_control.py` → `results/task1/paired_differences.csv`
 
 ### Table 1.3 — UBR robustness
 
@@ -274,7 +266,7 @@ with the input-season cohort mean in the primary run. Dropping it entirely:
 
 A 0.04 wRC+ move. The conclusion does not depend on UBR.
 
-> Source: `SSAC27/scripts/task1_constituent_control.py` → `results/task1_ubr_robustness.csv`
+> Source: `SSAC27/scripts/task1_constituent_control.py` → `results/task1/ubr_robustness.csv`
 
 ### What Task 1 means for the paper
 
@@ -310,7 +302,7 @@ scalar, and 5 interpretable dimensions capture essentially all of it."
 **The WAR targets are reported in "The three targets compared" above** rather
 than repeated here; on a single fold nothing on either WAR target is significant.
 
-**Task 6 sharpens this, unfavourably.** On five rolling origins and 1,707 pooled
+**Task 6 sharpens this, unfavourably.** On five rolling origins and 1,706 pooled
 test cases the M1 − M2 interval no longer contains zero: −0.180 [−0.350, −0.008].
 The tie reported here does not survive the wider evidence. See Task 6.
 
@@ -381,7 +373,7 @@ Secondary, published 6-value alpha grid:
 | M4 B2V + age + PA | 18.058 | 19.130 | 18.028 | 18.406 |
 | M5 constituents + age + PA | 18.307 | 18.681 | 17.762 | 18.248 |
 
-> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2_fold_performance.csv`
+> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2/fold_performance.csv`
 > ```bash
 > python SSAC27/scripts/task2_rolling_origin.py
 > ```
@@ -399,7 +391,7 @@ bootstrap, 2,000 replicates.
 | M4 vs M3 | +0.618 [−0.008, +1.251] | +1.551 [+0.887, +2.249]\* | +1.134 [+0.404, +1.842]\* | +1.103 [+0.685, +1.514]\* |
 | M4 vs M5 | +0.259 [−0.092, +0.616] | −0.444 [−0.701, −0.198]\* | −0.286 [−0.658, +0.099] | −0.159 [−0.351, +0.026] |
 
-> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2_paired_differences.csv`
+> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2/paired_differences.csv`
 
 ### Table 2.3 — Sign consistency across folds A, B, C
 
@@ -415,7 +407,7 @@ The headline output of Task 2.
 
 Identical pattern under the published 6-value alpha grid.
 
-> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2_sign_consistency.csv`
+> Source: `SSAC27/scripts/task2_rolling_origin.py` → `results/task2/sign_consistency.csv`
 
 ### What Task 2 means for the paper
 
@@ -526,7 +518,7 @@ says it should.
 | 2023 (Fold B test) | 355 | 39 | 71 | 245 | 2.580 | 0.734 |
 | 2024 (Fold C test) | 358 | 30 | 66 | 262 | 2.648 | 0.742 |
 
-> Source: `SSAC27/scripts/task3_marcel_incremental.py` → `results/task3_marcel_coverage.csv`
+> Source: `SSAC27/scripts/task3_marcel_incremental.py` → `results/task3/marcel_coverage.csv`
 
 ### Table 3.0 — What widening the pool actually bought
 
@@ -552,7 +544,7 @@ pool genuinely is better fed — depth 2.22 → 2.61, reliability 0.722 → 0.73
 the added seasons are low-PA ones that carry little weight, and the 2019–2020
 backfill only reaches origins 2021 and 2022. Reported as measured.
 
-> Source: `results/task3_marcel_variants.csv`
+> Source: `results/task3/marcel_variants.csv`
 
 ### Table 3.1 — Test MAE by fold × model
 
@@ -570,7 +562,7 @@ intercept and slope on Marcel, so part of that gap is recalibration unrelated to
 B2V. M6c isolates it — worth 0.630 wRC+ pooled on its own. **M7 − M6c is the
 honest incremental test.**
 
-> Source: `SSAC27/scripts/task3_marcel_incremental.py` → `results/task3_fold_performance.csv`
+> Source: `SSAC27/scripts/task3_marcel_incremental.py` → `results/task3/fold_performance.csv`
 > ```bash
 > python SSAC27/scripts/task3_marcel_incremental.py
 > ```
@@ -591,7 +583,7 @@ honest incremental test.**
 
 All seven contrasts keep the same sign in all three folds except M7 vs M1.
 
-> Source: `results/task3_paired_differences.csv`, `results/task3_sign_consistency.csv`
+> Source: `results/task3/paired_differences.csv`, `results/task3/sign_consistency.csv`
 
 ### Table 3.3 — Pooled test cases split by Marcel's actual history depth
 
@@ -605,7 +597,7 @@ All seven contrasts keep the same sign in all three folds except M7 vs M1.
 the pool was widened. Marcel's deficit is confined to genuinely new players and
 is indistinguishable from zero at full depth.
 
-> Source: `results/task3_history_depth_strata.csv`
+> Source: `results/task3/history_depth_strata.csv`
 
 ### Table 3.4 — Marcel on the WAR targets
 
@@ -639,7 +631,7 @@ Pooled paired differences:
 Every one of these contrasts keeps the same sign in all three folds except
 M7 vs M1 on wRC+.
 
-> Source: `results/task3_fold_performance.csv`, `results/task3_paired_differences.csv`
+> Source: `results/task3/fold_performance.csv`, `results/task3/paired_differences.csv`
 
 ### What Task 3 means for the paper
 
@@ -757,9 +749,9 @@ distance, which would handicap method A rather than test it.
 | WAR / 600 | same_season | −0.029 | −0.032 | −0.058\* |
 | WAR / 600 | past_seasons | −0.011 | −0.012 | −0.020 |
 
-> Source: `SSAC27/scripts/task4_comp_search.py` → `results/task4_retrieval_performance.csv`, `results/task4_paired_differences.csv`
+> Source: `SSAC27/scripts/task4_comparable_players.py` → `results/task4/retrieval_performance.csv`, `results/task4/paired_differences.csv`
 > ```bash
-> python SSAC27/scripts/task4_comp_search.py
+> python SSAC27/scripts/task4_comparable_players.py
 > ```
 
 ### What Task 4 means for the paper
@@ -836,7 +828,7 @@ paper's framing has to change.
 | WAR (counting) | PCA | 0 / 3 | yes | 1 / 3 | −0.047 [−0.080, −0.015]\* |
 | WAR (counting) | JointVAE | 0 / 3 | yes | 0 / 3 | −0.038 [−0.069, −0.007]\* |
 
-> Source: `SSAC27/scripts/task5_encoder_crosscheck.py` → `results/task5_encoder_verdicts.csv`
+> Source: `SSAC27/scripts/task5_encoder_crosscheck.py` → `results/task5/encoder_verdicts.csv`
 > ```bash
 > python SSAC27/scripts/task5_encoder_crosscheck.py
 > ```
@@ -912,7 +904,7 @@ origins. A 2020-free variant is reported instead (`decisions_log.md` D16).
 | 2022→23 | 908 | 2022→2023 | 353 |
 | 2023→24 | 1,261 | 2023→2024 | 358 |
 | 2024→25 | 1,619 | 2024→2025 | 362 |
-| pooled | — | all five | **1,707** |
+| pooled | — | all five | **1,706** |
 
 ### Table 6.1 — Test MAE by fold × model, 2019–2025
 
@@ -937,7 +929,7 @@ archived-anchored Task 2 closely:
 | M1 B2V 5 tools | 18.518 | 19.011 | 18.076 | **18.533** | **18.533** |
 | M2 constituent stats | 18.664 | 18.631 | 17.740 | 18.341 | 18.388 |
 
-> Source: `SSAC27/scripts/task6_extended_window.py` → `results/task6_fold_performance.csv`
+> Source: `SSAC27/scripts/task6_extended_window.py` → `results/task6/fold_performance.csv`
 > ```bash
 > python SSAC27/scripts/task6_extended_window.py
 > ```
@@ -953,12 +945,12 @@ archived-anchored Task 2 closely:
 | **M1 vs M2** | 1 / 5 | **no** | 3 / 5 | **−0.180 [−0.350, −0.008]\*** |
 | M6c vs M1 | 1 / 5 | no | 0 / 5 | −0.207 [−0.580, +0.167] |
 
-> Source: `results/task6_sign_consistency.csv`, `results/task6_paired_differences.csv`
+> Source: `results/task6/sign_consistency.csv`, `results/task6/paired_differences.csv`
 
 ### What Task 6 means for the paper
 
 **The headline claim strengthens.** B2V beats the calibrated scalar in **5 of 5
-origins**, with the CI excluding zero in 4 of them and pooled over 1,707 test
+origins**, with the CI excluding zero in 4 of them and pooled over 1,706 test
 cases at +0.981 [+0.619, +1.343]. "Across five temporal holdouts spanning
 2020–2025" is now defensible, and the interval is far tighter than any single
 fold's. The one fold that misses significance (2022→23, +0.683 [−0.001, +1.384])
@@ -971,8 +963,8 @@ are simply equivalent. Meanwhile M7 vs M6c stays positive in **5 / 5** origins,
 pooled +0.404 [+0.193, +0.608] — the incremental claim is the robust one.
 
 **The unfavourable finding sharpens, and must be reported.** M1 vs M2 was a tie
-in Task 1 (CI containing zero). On five origins and 1,707 cases the pooled
-estimate is **−0.180 [−0.350, +0.008]**, now excluding zero: the 22 constituent
+in Task 1 (CI containing zero). On five origins and 1,706 cases the pooled
+estimate is **−0.180 [−0.350, −0.008]**, now excluding zero: the 22 constituent
 statistics are *significantly* better than the 5 tool scores. The magnitude is
 about 1% of MAE, so the practical reading is still "compression is nearly
 lossless" — but the paper can no longer claim even a tie. The defensible sentence
@@ -1014,7 +1006,7 @@ Every sign and every verdict matches Task 2 on the same three origins, computed
 on an independently rebuilt cohort. That is the strongest available check that
 the rebuild is sound.
 
-> Source: `results/task6_fold_performance.csv`, `results/task6_paired_differences.csv`
+> Source: `results/task6/fold_performance.csv`, `results/task6/paired_differences.csv`
 
 **Caveats.** Tool scores are recomputed rather than archived, so Task 6 is not
 expected to land on 18.0267 to four decimals — though the 2020-free variant's

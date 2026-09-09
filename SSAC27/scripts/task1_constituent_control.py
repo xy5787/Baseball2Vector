@@ -34,7 +34,7 @@ import json
 import numpy as np
 import pandas as pd
 
-import ssac_common as sc
+import common as sc
 
 GRIDS = {
     "wide_logspace_-3_4_50": sc.ALPHA_GRID_WIDE,
@@ -141,6 +141,7 @@ def run_target(
 
 
 def main() -> None:
+    (sc.RESULTS_DIR / "task1").mkdir(parents=True, exist_ok=True)
     players = sc.load_player_seasons()
     transitions = sc.build_transitions(players)
 
@@ -162,18 +163,18 @@ def main() -> None:
         assert abs(observed - expected) < 0.01, (model, observed, expected)
         print(f"  reproduction check {model:<20s} MAE {observed:.4f} (published {expected})")
 
-    summary.to_csv(sc.RESULTS_DIR / "task1_model_comparison.csv", index=False)
-    paired.to_csv(sc.RESULTS_DIR / "task1_paired_differences.csv", index=False)
+    summary.to_csv(sc.RESULTS_DIR / "task1" / "model_comparison.csv", index=False)
+    paired.to_csv(sc.RESULTS_DIR / "task1" / "paired_differences.csv", index=False)
     pd.concat([b[2] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task1_predictions.csv", index=False
+        sc.RESULTS_DIR / "task1" / "predictions.csv", index=False
     )
     pd.concat([b[3] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task1_alpha_tuning.csv", index=False
+        sc.RESULTS_DIR / "task1" / "alpha_tuning.csv", index=False
     )
     pd.concat([b[4] for b in blocks], ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task1_ubr_robustness.csv", index=False
+        sc.RESULTS_DIR / "task1" / "ubr_robustness.csv", index=False
     )
-    (sc.RESULTS_DIR / "task1_environment.json").write_text(
+    (sc.RESULTS_DIR / "task1" / "environment.json").write_text(
         json.dumps(sc.environment_stamp(), indent=2) + "\n", encoding="utf-8"
     )
 

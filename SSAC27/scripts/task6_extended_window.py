@@ -38,9 +38,9 @@ import json
 import numpy as np
 import pandas as pd
 
-import marcel
-import ssac_common as sc
-import ssac_data as sd
+import common as sc
+from baseball2vec import marcel
+import data as sd
 
 GRID = sc.ALPHA_GRID_WIDE
 GRID_NAME = "wide_logspace_-3_4_50"
@@ -175,9 +175,10 @@ def run_window(
 
 
 def main() -> None:
+    (sc.RESULTS_DIR / "task6").mkdir(parents=True, exist_ok=True)
     cohort = sd.load_extended_cohort()
     agreement = assert_matches_archived(cohort)
-    agreement.to_csv(sc.RESULTS_DIR / "task6_encoding_agreement.csv", index=False)
+    agreement.to_csv(sc.RESULTS_DIR / "task6" / "encoding_agreement.csv", index=False)
 
     pool = sd.load_history_pool()
     base = sd.build_extended_transitions(cohort)
@@ -193,7 +194,7 @@ def main() -> None:
     )
     flow["n_cohort_input_season"] = flow["Season_t"].map(cohort.groupby("Season").size())
     flow["max_PA_input_season"] = flow["Season_t"].map(cohort.groupby("Season")["PA"].max())
-    flow.to_csv(sc.RESULTS_DIR / "task6_sample_flow.csv", index=False)
+    flow.to_csv(sc.RESULTS_DIR / "task6" / "sample_flow.csv", index=False)
     print("\n  Extended transitions:")
     print(flow.to_string(index=False))
 
@@ -240,16 +241,16 @@ def main() -> None:
         folds=[f for f in primary["fold"].unique() if f != "pooled"],
     )
 
-    performance.to_csv(sc.RESULTS_DIR / "task6_fold_performance.csv", index=False)
-    paired.to_csv(sc.RESULTS_DIR / "task6_paired_differences.csv", index=False)
-    signs.to_csv(sc.RESULTS_DIR / "task6_sign_consistency.csv", index=False)
+    performance.to_csv(sc.RESULTS_DIR / "task6" / "fold_performance.csv", index=False)
+    paired.to_csv(sc.RESULTS_DIR / "task6" / "paired_differences.csv", index=False)
+    signs.to_csv(sc.RESULTS_DIR / "task6" / "sign_consistency.csv", index=False)
     pd.concat(prediction_frames, ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task6_predictions.csv", index=False
+        sc.RESULTS_DIR / "task6" / "predictions.csv", index=False
     )
     pd.concat(tuning_frames, ignore_index=True).to_csv(
-        sc.RESULTS_DIR / "task6_alpha_tuning.csv", index=False
+        sc.RESULTS_DIR / "task6" / "alpha_tuning.csv", index=False
     )
-    (sc.RESULTS_DIR / "task6_environment.json").write_text(
+    (sc.RESULTS_DIR / "task6" / "environment.json").write_text(
         json.dumps(
             {
                 **sc.environment_stamp(),

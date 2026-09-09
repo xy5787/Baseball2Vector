@@ -1,0 +1,54 @@
+{
+  "canonical_manuscript": {
+    "path": "paper/baseball2vector_en.tex",
+    "sha256": "9bb4bf7cf78bf871e8b3dc7a823af161b0ab43a98a3141ffb784321d09f9cb82",
+    "promoted_source_sha256": "c62ef04b939ba284b058b5c2b48cc1c8d2a4599b2d58150c741cba6658656b82",
+    "note": "The promoted revision was externalized into references.bib and three table inputs after byte-identical copy verification."
+  },
+  "data": {
+    "v3_results.csv": "70bea280ec725ac78376e94edf41fae6fd036fe8b7a0b71270869eb1cfdf0873",
+    "player_id_audit.csv": "0eb700a1fb7d2c8c5de9277e6edef089d11036654f38cbf9173588a58a199956",
+    "chadwick_registry_subset.csv": "da51e7874f8f09042b18222da940b14dbf96d4ef8d55b0daf47d8ed8c63bf4cd",
+    "player_seasons.csv": "f42cb85f427dea4e761717bb7eacb3a2c0117b82fe24d364bb97af976eecc626",
+    "transitions.csv": "62f69a7840caa7cf362550b4bb91d2914c3487607cc8aa2f90cdbb8d82d3c900"
+  },
+  "final_run_artifacts": {
+    "calibrated_prediction.csv": "c9d3da5e6c426903916dd8e12319f4911b2713eed45aad9deae8dda620ec87a9",
+    "calibrated_predictions.csv": "54d646f9d255d4fae861d103415addf0c9df4a0dcbd6cb492dedc5de1d249596",
+    "delta_association_coefficients.csv": "3ce59bc65202195b651afb1dcf0ef64c72c5801d656c77f989b8840a80a65396",
+    "figure1_alignment.json": "6aede2af24395dfd1ded3ad647c2175b2687fdf430e0fd1c6d7d5f2545067939",
+    "illustrative_matched_pair.csv": "98a0d58392952b4b331b2813ad16478f5a59fe5be0fba41a8985a97c25aaa132",
+    "matched_profile_distance_differences.csv": "f0c23abe17d0ad0813cdde647772f2453e49365c0a2cf98bd3684f5070b3d2ef",
+    "matched_profile_distance_summary.csv": "4cbe6219b0d0491292fc34b677b8e2450a55b29de594e1c0c920bf9c8dee599f",
+    "matching_sample_flow.csv": "b7f1de1973613cd07e83dec3929f611e8c36a8ff0f6b548172e66d51bc947125",
+    "matching_sample_flow_by_season.csv": "e32579c7f883f574556f4a7570b005034200550d894b7912bc6018cd2e9fdd51",
+    "paired_model_differences.csv": "f58060beee019c015af384d40df63e357b60f0fc2ede896ecaffdab56e553b97",
+    "prediction_sample_flow.csv": "a23866882cf1e6df401c1e3bf7e8a926fcad2856308daf203277c57000157be6",
+    "reproduction_check.json": "9e406af130517c42d6bd31200674afb126a8e26d8ed24393a386fa10ac401bc8",
+    "ridge_tuning.csv": "4efe242d3d0d44c5979161591b890056bffd35a6f293cfc38475acdaa2aac59a",
+    "scaling_audit.json": "01e207b4f49dcbf136ef977dc4873682b5d577c7bd6f02fbdfa19b1f8f63acb3",
+    "scaling_feature_comparison.csv": "9d0fdb9d7ecbea63cd69f8b7f8766c093b1101b4aa5dda359262c62062fb1585",
+    "scaling_prediction_differences.csv": "366ff0c5051494ff9d6776d19a3767e9524505019ef87672a62bdd492b531de9",
+    "stability_by_pa.csv": "fb6364dffa0a0667ed624fbe56ff72a31401a57be778fa980302e51dfec3d63d"
+  },
+  "analysis": {
+    "random_seed": 42,
+    "bootstrap_replicates": 2000,
+    "reproduced": {
+      "alignment_r": 0.8060958222864365,
+      "league_mean_mae": 22.27433553411207,
+      "carry_forward_mae": 22.349162011173185,
+      "forecast_safe_b2v_mae": 18.02668351334404,
+      "forecast_safe_b2v_r2": 0.2799109220731068,
+      "forecast_safe_b2v_spearman": 0.5078511575288486,
+      "same_player_median": 0.7135531593258322,
+      "scalar_matched_median": 1.0040828538654427,
+      "corrected_random_median": 1.1884169383225518
+    },
+    "discrepancies": [
+      "Forecast-safe within-input-season scaling changes B2V MAE from the archived approximately 18.023 to 18.027.",
+      "The random-pair median changes from approximately 1.197 to 1.188 because random pairs now use exactly the 2,080 successfully matched focal rows.",
+      "The same-player median reproduces the prior approximately 0.714 value; the scalar-matched median changes from approximately 1.001 to 1.004 after floating-point ties are resolved by a rounded-gap stable-ID rule."
+    ]
+  }
+}
