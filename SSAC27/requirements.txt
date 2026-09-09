@@ -1,8 +1,8 @@
 # SSAC27 experiment package -- versions used to produce SSAC27/results/.
-# Python 3.14.6. Seed 42 throughout; see results/decisions_log.md.
+# Python 3.14.6. Seed 42 throughout; see results/provenance/decisions_log.md.
 #
 #   pip install -r SSAC27/requirements.txt
-#   python SSAC27/scripts/run_ssac_experiments.py
+#   python SSAC27/scripts/run_all.py
 #
 # torch is NOT required: the VAE tool scores are read from the archived
 # player-season table rather than retrained.
@@ -11,8 +11,7 @@
 #   data/raw/batting_stats_2021_2025.csv                        qualified 2021-2025
 #   data/raw/fangraphs-leaderboards (1).csv                     2021-2026, no PA minimum
 #   data/raw/batting_stats_2019_2020.csv                        2019-2020, no PA minimum
-#   final_academic_revision/run_20260808_055335/
-#     data_intermediate/player_seasons_with_ids.csv             archived tool scores + IDs
+#   data/processed/transitions.csv                              public analysis transitions
 numpy==2.5.1
 pandas==3.0.3
 scipy==1.17.1

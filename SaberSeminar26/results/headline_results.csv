@@ -1,0 +1,8 @@
+claim_id,estimate,ci_low,ci_high,n,manuscript_value,source_file
+alignment_war_r,0.8060958222864365,0.7794979865165177,0.8304097418616372,2309,0.806,figure1_alignment.json
+forecast_b2v_mae,18.02668351334404,16.5142534217134,19.680878982589903,358,18.027,prediction_results.csv
+b2v_vs_calibrated_mae,1.19282062346608,0.4026224647984351,2.012344090952605,358,1.193,paired_model_differences.csv
+same_player_distance,0.7135531593258322,0.6963658655807019,0.7261642950757156,1414,0.714,matched_profile_distance_summary.csv
+scalar_matched_distance,1.0040828538654427,0.980188824108956,1.0250818847534895,2080,1.004,matched_profile_distance_summary.csv
+random_pair_distance,1.1884169383225518,1.1606535108980092,1.2101737654491451,2080,1.188,matched_profile_distance_summary.csv
+delta_power_coefficient,3.148156477263623,2.95920686054226,3.3305918729028576,1414,3.148,delta_association_coefficients.csv

@@ -10,6 +10,3 @@ seaborn==0.13.2
 matplotlib==3.10.9
 scipy==1.17.1
 pybaseball==2.2.7
-
-# Development / linting (not required to reproduce results)
-ruff==0.15.12
